@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kriz Masası</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#1a1a2e;font-family:Arial,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
+#app{width:100%;max-width:560px;}
+.screen{display:none;}
+.screen.active{display:block;}
+.card{background:#fff;border-radius:12px;padding:20px;margin-bottom:12px;}
+.badge{display:inline-block;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:bold;margin-bottom:10px;}
+.badge.kriz{background:#FCEBEB;color:#A32D2D;}
+.badge.karar{background:#E6F1FB;color:#0C447C;}
+.badge.sonuc{background:#EAF3DE;color:#27500A;}
+h1{font-size:20px;font-weight:bold;color:#222;margin-bottom:8px;}
+h2{font-size:16px;font-weight:bold;color:#222;margin-bottom:10px;}
+p{font-size:13px;color:#555;line-height:1.6;margin-bottom:10px;}
+input[type=text]{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;font-size:14px;margin-bottom:10px;outline:none;}
+input[type=text]:focus{border-color:#378ADD;}
+.btn{display:inline-block;padding:11px 22px;border-radius:8px;border:none;font-size:14px;cursor:pointer;font-weight:bold;}
+.btn.ana{background:#185FA5;color:#fff;}
+.btn.ana:hover{background:#0C447C;}
+.btn.gri{background:#f0f0f0;color:#333;border:1px solid #ddd;}
+.btn.gri:hover{background:#e0e0e0;}
+.btn:disabled{opacity:0.5;cursor:default;}
+.secenek{width:100%;text-align:left;padding:12px 14px;margin-bottom:8px;border:1px solid #ddd;border-radius:8px;background:#f9f9f9;cursor:pointer;font-size:13px;color:#222;-webkit-appearance:none;appearance:none;-webkit-tap-highlight-color:transparent;outline:none;}
+.secenek:hover:not(:disabled){background:#eef5ff;border-color:#378ADD;}
+.secenek:active:not(:disabled){background:#f9f9f9;border-color:#ddd;}
+.secenek.dogru{border-color:#639922 !important;background:#EAF3DE !important;color:#27500A !important;font-weight:bold;}
+.secenek.yanlis{border-color:#E24B4A !important;background:#FCEBEB !important;color:#A32D2D !important;}
+.secenek:disabled{cursor:default;}
+.yorum{background:#FAEEDA;border:1px solid #EF9F27;border-radius:8px;padding:12px;font-size:13px;color:#633806;margin-top:10px;line-height:1.5;}
+.ilerleme{display:flex;gap:6px;margin-bottom:12px;}
+.adim{flex:1;height:5px;border-radius:3px;background:#ddd;}
+.adim.tamamlandi{background:#378ADD;}
+.adim.aktif{background:#85B7EB;}
+.puan-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;}
+.puan-kart{background:#f5f5f5;border-radius:8px;padding:12px;text-align:center;}
+.puan-kart .label{font-size:11px;color:#888;margin-bottom:4px;}
+.puan-kart .val{font-size:20px;font-weight:bold;color:#222;}
+.oyuncu-satir{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f0f0f0;}
+.avatar{width:32px;height:32px;border-radius:50%;background:#B5D4F4;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:bold;color:#0C447C;flex-shrink:0;}
+.oyuncu-adi{font-size:13px;color:#222;flex:1;}
+.oyuncu-puan{font-size:13px;font-weight:bold;color:#185FA5;}
+.bekle-ekran{text-align:center;padding:30px 20px;}
+.oda-kodu{font-size:36px;font-weight:bold;color:#185FA5;letter-spacing:8px;margin:10px 0;}
+.sure-alan{background:#fff;border-radius:12px;padding:14px 20px;margin-bottom:12px;display:flex;align-items:center;gap:14px;}
+.sure-daire-wrap{position:relative;width:56px;height:56px;flex-shrink:0;}
+.sure-daire-wrap svg{position:absolute;top:0;left:0;transform:rotate(-90deg);}
+.sure-sayi{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:18px;font-weight:bold;color:#222;line-height:1;}
+.sure-bar-wrap{flex:1;}
+.sure-bar-label{display:flex;justify-content:space-between;font-size:12px;color:#888;margin-bottom:5px;}
+.sure-bar-bg{height:10px;background:#eee;border-radius:5px;overflow:hidden;}
+.sure-bar-fill{height:100%;border-radius:5px;transition:width 1s linear,background 0.5s;}
+.sure-bar-fill.yesilden{background:#639922;}
+.sure-bar-fill.saridan{background:#EF9F27;}
+.sure-bar-fill.kildan{background:#E24B4A;}
+.header-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.puan-chip{background:#E6F1FB;color:#0C447C;border-radius:20px;padding:4px 12px;font-size:12px;font-weight:bold;}
+@media(max-width:400px){.puan-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="giris" class="screen active">
+    <div class="card">
+      <div class="badge kriz">Takım Oyunu</div>
+      <h1>Kriz Masası</h1>
+      <p>Şirketinizin en büyük müşterisi sözleşmeyi feshetmek üzere. 48 saatiniz var. Takım olarak 5 kritik karar vereceksiniz.</p>
+      <input type="text" id="ad-input" placeholder="Adınızı girin..." maxlength="20"/>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <button class="btn ana" onclick="soloBaslat()" style="width:100%;font-size:15px;padding:13px;">▶ Hemen oyna</button>
+        <div style="display:flex;gap:8px;">
+          <button class="btn gri" onclick="odaOlustur()" style="flex:1;font-size:12px;">👥 Grup odası aç</button>
+          <button class="btn gri" onclick="katilEkraniAc()" style="flex:1;font-size:12px;">🔑 Odaya katıl</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="katil-ekran" class="screen">
+    <div class="card">
+      <div class="badge karar">Katılımcı</div>
+      <h1>Odaya katıl</h1>
+      <p id="katil-ad-goster" style="font-size:14px;color:#185FA5;font-weight:bold;margin-bottom:10px;"></p>
+      <input type="text" id="oda-kodu-input" placeholder="Oda kodunu girin (6 hane)..." maxlength="6" style="text-transform:uppercase;letter-spacing:4px;font-size:18px;"/>
+      <button class="btn ana" onclick="odayaKatil()">Katıl</button>
+      <br><br>
+      <button class="btn gri" onclick="goster('giris')">← Geri</button>
+    </div>
+  </div>
+  <div id="kolay-bekle" class="screen">
+    <div class="card">
+      <div class="badge karar">Kolaylaştırıcı</div>
+      <h2>Katılımcıları bekliyor...</h2>
+      <p>Bu kodu katılımcılarla paylaşın:</p>
+      <div class="oda-kodu" id="goster-oda-kodu">——</div>
+      <div id="kolay-oyuncu-listesi" style="margin:14px 0;"></div>
+      <button class="btn ana" id="baslat-btn" onclick="oyunuBaslat()" disabled>Oyunu başlat (<span id="oyuncu-sayisi">0</span> kişi)</button>
+    </div>
+  </div>
+  <div id="katil-bekle" class="screen">
+    <div class="card bekle-ekran">
+      <div style="font-size:48px;margin-bottom:10px;">⏳</div>
+      <h2>Kolaylaştırıcı oyunu başlatmasını bekliyor...</h2>
+      <p id="katil-bekle-ad" style="margin-top:8px;"></p>
+      <div id="katil-bekle-oyuncular" style="margin-top:14px;"></div>
+    </div>
+  </div>
+  <div id="oyun" class="screen">
+    <div class="ilerleme" id="ilerleme-bar"></div>
+    <div class="header-bar">
+      <span class="puan-chip">★ <span id="anlik-puan">0</span> puan</span>
+      <span style="font-size:12px;color:#888;" id="karar-baslik-mini"></span>
+    </div>
+    <div class="sure-alan">
+      <div class="sure-daire-wrap">
+        <svg width="56" height="56" viewBox="0 0 56 56">
+          <circle cx="28" cy="28" r="24" fill="none" stroke="#eee" stroke-width="5"/>
+          <circle id="sure-daire" cx="28" cy="28" r="24" fill="none" stroke="#639922" stroke-width="5" stroke-dasharray="150.8" stroke-dashoffset="0" stroke-linecap="round" style="transition:stroke-dashoffset 1s linear,stroke 0.5s;"/>
+        </svg>
+        <div class="sure-sayi" id="sure-sayi">30</div>
+      </div>
+      <div class="sure-bar-wrap">
+        <div class="sure-bar-label"><span>Kalan süre</span><span id="sure-yuzde">100%</span></div>
+        <div class="sure-bar-bg"><div class="sure-bar-fill yesilden" id="sure-bar-fill" style="width:100%;"></div></div>
+      </div>
+    </div>
+    <div id="karar-alani"></div>
+  </div>
+  <div id="sonuc" class="screen">
+    <div class="card">
+      <div class="badge sonuc">Oyun bitti</div>
+      <h1>Sonuçlar</h1>
+      <div class="puan-grid">
+        <div class="puan-kart"><div class="label">Puanın</div><div class="val" id="benim-puanim">—</div></div>
+        <div class="puan-kart"><div class="label">Doğru</div><div class="val" id="dogru-sayi">—</div></div>
+        <div class="puan-kart"><div class="label">Müşteri</div><div class="val" id="musteri-sonuc">—</div></div>
+      </div>
+      <div id="sonuc-yorum" class="yorum"></div>
+    </div>
+    <div class="card">
+      <h2>Takım sıralaması</h2>
+      <div id="siralama-listesi"></div>
+    </div>
+    <div class="card" style="margin-bottom:0;">
+      <h2>Yansıma soruları</h2>
+      <p>• Hangi kararı almak en zordu? Neden?</p>
+      <p>• Gerçek hayatta nasıl davranırdınız?</p>
+      <p style="margin-bottom:14px;">• Takım kararı bireysel karardan iyi miydi?</p>
+      <button class="btn gri" onclick="location.reload()">↺ Yeni oyun</button>
+    </div>
+    <div class="card" style="margin-bottom:0;background:linear-gradient(135deg,#1a1a2e,#185FA5);border:none;">
+      <div style="text-align:center;padding:8px 0;">
+        <div style="font-size:22px;margin-bottom:8px;">🚀</div>
+        <h2 style="color:#fff;font-size:16px;margin-bottom:6px;">Bu deneyimi ekibinizle yaşayın</h2>
+        <p style="color:#B5D4F4;font-size:13px;margin-bottom:16px;">Firmanıza özel senaryo, karakterler ve sorularla ekibinize özel oyun tasarlayalım.</p>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <a href="https://wa.me/?text=Kriz+Masasi+oyununu+denedim,+ekibimize+ozel+tasarim+hakkinda+bilgi+almak+istiyorum" target="_blank" style="display:block;background:#25D366;color:#fff;padding:11px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:13px;text-align:center;">💬 WhatsApp ile iletişime geç</a>
+          <a href="mailto:?subject=Ekibimize%20Özel%20Oyun%20Tasarımı&body=Kriz%20Masası%20oyununu%20denedim." style="display:block;background:rgba(255,255,255,0.15);color:#fff;padding:11px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:13px;text-align:center;border:1px solid rgba(255,255,255,0.3);">✉️ E-posta gönder</a>
+        </div>
+        <p style="color:rgba(255,255,255,0.5);font-size:11px;margin-top:12px;margin-bottom:0;">Ekibinize özel tasarım</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, set, get, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+const firebaseConfig = {apiKey:"AIzaSyAuBmIcCVJi33Ni9V3q761uq_h7A-KcqD4",authDomain:"kriz-masasi.firebaseapp.com",databaseURL:"https://kriz-masasi-default-rtdb.firebaseio.com",projectId:"kriz-masasi",storageBucket:"kriz-masasi.firebasestorage.app",messagingSenderId:"865050265845",appId:"1:865050265845:web:17d80b7e7bd10128669dbc"};
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const SURE=30,CEVRE=2*Math.PI*24;
+const KARARLAR=[
+  {no:1,baslik:"Müşteri sizi arıyor",durum:"Büyük müşteriniz CEO'su aradı: 'Beklediğimiz sonuçları alamıyoruz, sözleşmeyi feshedebiliriz.' Ne yaparsınız?",secenekler:["Dinleyin, soru sorun, toplantı isteyin","Özür dileyip hemen çözeceğinizi söyleyin","Fiyat indirimi teklif edin","Hukuk departmanına bildirin"],dogru:0,puanlar:[30,10,5,0],yorumlar:["✓ Doğru! Önce dinlemek en güçlü hamledir. Müşteri duyulmak istiyor, toplantıya davet güven inşa eder.","~ Fena değil ama özür tek başına yetmez. Somut bir toplantı talebi olmadan söz havada kalır.","~ Fiyat indirimi ilişkiyi değil, fiyatı çözer. Daha iyi bir alternatif olmalı: önce sorunu anlamak.","✗ Hukuki adım ilişkiyi tamamen bitirir. Bu aşamada diyalog kapısını açık tutmak çok daha değerli."]},
+  {no:2,baslik:"Toplantı hazırlığı",durum:"48 saat içinde müşteri toplantısı var. Ekibiniz ne yapmalı?",secenekler:["Sunumun görselini hazırlayın","Rakip firmaları araştırın","Üst yönetimi toplantıya dahil edin","Müşterinin geçmiş şikayetlerini analiz edin"],dogru:3,puanlar:[5,10,15,30],yorumlar:["~ Görseller güzel ama müşteriyi ikna etmez. Daha iyi bir alternatif olmalı: içerik, form değil.","~ Rakipleri bilmek faydalı ama asıl soru şu: müşteri neden ayrılmak istiyor? Önce bunu anlamak gerek.","~ Üst yönetimi dahil etmek güç gösterisi yapar ama müşterinin spesifik şikayetlerine cevap vermez.","✓ Doğru! Müşterinin geçmiş şikayetlerini ve beklentilerini anlamadan toplantıya girmek fırsatı kaybettirir."]},
+  {no:3,baslik:"Toplantıda gerginlik",durum:"Müşteri ekibi çok sert: 'Hiç sözünüzü tutmadınız!' Nasıl yanıt verirsiniz?",secenekler:["Savunmaya geçip haklılığınızı kanıtlayın","Empati kurun, haklı noktaları kabul edin","Toplantıyı erteleyin","Sessiz kalıp geçiştirin"],dogru:1,puanlar:[0,30,5,5],yorumlar:["✗ Savunmaya geçmek gerginliği tırmandırır ve müşteriyi daha da uzaklaştırır.","✓ Doğru! Empati kurmak ve haklı noktaları kabul etmek, müşteriyi sakinleştirir ve diyalog kapısını açar.","~ Ertelemek sorunu çözmez, sadece erteler. Daha iyi bir alternatif olmalı: şu an fırsatı kaçırmayın.","~ Sessiz kalmak pasif bir duruş verir. Müşteri yanıt bekliyor, bu bir fırsat penceresi."]},
+  {no:4,baslik:"Çözüm teklifi",durum:"Müşteri dinlemeye hazır. Ne teklif edersiniz?",secenekler:["Ücretsiz ekstra hizmet paketi","Sözleşme uzatma indirimi","Somut eylem planı: ne, kim, ne zaman","Yeni proje yöneticisi atama"],dogru:2,puanlar:[10,15,30,10],yorumlar:["~ Ekstra hizmet iyi niyet gösterir ama asıl sorun neydi? Daha iyi bir alternatif olmalı: somut adımlar.","~ İndirim müşteriyi tutabilir ama güveni geri kazandırmaz. Sorunun kök nedenine inmek gerekiyor.","✓ Doğru! Somut eylem planı: ne yapılacak, kim yapacak, ne zaman bitecek. Bu müşteride güven yaratır.","~ Yeni bir yönetici atamak süreci uzatır. Daha iyi bir alternatif olmalı: önce net bir plan sunun."]},
+  {no:5,baslik:"Toplantı sonu",durum:"Müşteri 'düşüneceğiz' dedi, toplantı bitti. Sonraki adım?",secenekler:["Kararlarını bekleyin","Hemen arayıp karar isteyin","Başka müşteriye odaklanın","Teşekkür maili + eylem planını yazılı gönderin"],dogru:3,puanlar:[5,0,0,30],yorumlar:["~ Pasif beklemek profesyonel değil. Daha iyi bir alternatif olmalı: inisiyatif alın, topu elinizde tutun.","✗ Hemen aramak baskı yaratır ve müşteriyi soğutur. Karar süreçlerine saygı göstermek gerekiyor.","✗ Müşteriyi erken bırakmak ilişkiyi tamamen bitirir. Henüz her şey kaybolmuş değil.","✓ Doğru! Teşekkür maili ve yazılı eylem planı profesyonellik gösterir, taahhütleri somutlaştırır."]}
+];
+let bilgi={odaKodu:null,oyuncuId:null,ad:null,rol:null};
+let mevcutKarar=0,toplamPuan=0,dogruSayi=0,sureInterval=null;
+window.goster=id=>{document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');};
+function initials(ad){return ad.split(' ').map(k=>k[0]).join('').substring(0,2).toUpperCase();}
+function rastgeleKod(){return Math.random().toString(36).substring(2,8).toUpperCase();}
+function sureyiGuncelle(kalan){
+  const yuzde=kalan/SURE,offset=CEVRE*(1-yuzde);
+  const daire=document.getElementById('sure-daire');
+  if(!daire)return;
+  document.getElementById('sure-sayi').textContent=kalan;
+  document.getElementById('sure-yuzde').textContent=Math.round(yuzde*100)+'%';
+  daire.style.strokeDashoffset=offset;
+  const bar=document.getElementById('sure-bar-fill');
+  bar.style.width=(yuzde*100)+'%';
+  if(kalan>15){daire.style.stroke='#639922';bar.className='sure-bar-fill yesilden';}
+  else if(kalan>8){daire.style.stroke='#EF9F27';bar.className='sure-bar-fill saridan';}
+  else{daire.style.stroke='#E24B4A';bar.className='sure-bar-fill kildan';}
+}
+window.odaOlustur=async()=>{
+  const ad=document.getElementById('ad-input').value.trim();
+  if(!ad){alert('Lütfen adınızı girin.');return;}
+  const kod=rastgeleKod();
+  bilgi={odaKodu:kod,ad,rol:'kolay',oyuncuId:'kolay_'+Date.now()};
+  await set(ref(db,`odalar/${kod}`),{durum:'bekliyor',mevcutKarar:0,sure_baslangic:0});
+  await set(ref(db,`odalar/${kod}/oyuncular/${bilgi.oyuncuId}`),{ad,puan:0,rol:'kolay'});
+  document.getElementById('goster-oda-kodu').textContent=kod;
+  goster('kolay-bekle');
+  kolayBekleIzle(kod);
+};
+window.soloBaslat=()=>{
+  const ad=document.getElementById('ad-input').value.trim();
+  if(!ad){alert('Lütfen adınızı girin.');return;}
+  bilgi={odaKodu:'solo_'+Date.now(),ad,rol:'solo',oyuncuId:'solo_'+Date.now()};
+  mevcutKarar=0;toplamPuan=0;dogruSayi=0;
+  oyunEkraniGoster(0);
+  window._soloSonraki=async(idx)=>{
+    clearInterval(sureInterval);
+    const sonraki=idx+1;
+    if(sonraki>=KARARLAR.length){soloSonuc();}
+    else{oyunEkraniGoster(sonraki);sureyiYonet_solo(sonraki);}
+  };
+  sureyiYonet_solo(0);
+};
+function sureyiYonet_solo(kIdx){
+  clearInterval(sureInterval);let kalan=SURE;sureyiGuncelle(kalan);
+  sureInterval=setInterval(()=>{
+    kalan--;sureyiGuncelle(kalan);
+    if(kalan<=0){clearInterval(sureInterval);const sonraki=kIdx+1;
+      if(sonraki>=KARARLAR.length){soloSonuc();}
+      else{oyunEkraniGoster(sonraki);sureyiYonet_solo(sonraki);}
+    }
+  },1000);
+}
+async function soloSonuc(){
+  clearInterval(sureInterval);goster('sonuc');
+  const maxPuan=KARARLAR.reduce((a,k)=>a+Math.max(...k.puanlar),0);
+  const yuzde=Math.round(toplamPuan/maxPuan*100);
+  document.getElementById('benim-puanim').textContent=toplamPuan;
+  document.getElementById('dogru-sayi').textContent=dogruSayi+'/5';
+  document.getElementById('musteri-sonuc').textContent=yuzde>=60?'✓':'✗';
+  document.getElementById('sonuc-yorum').textContent=yuzde>=80?'Mükemmel! Müşteri kazanıldı. Empati ve somut adımlar fark yarattı.':yuzde>=60?'İyi gitti ama bazı anlarda fırsatlar kaçırıldı.':'Müşteri kaybedildi. Savunmacı yaklaşım ilişkiyi zayıflattı.';
+  document.getElementById('siralama-listesi').innerHTML=`<div class="oyuncu-satir"><div style="font-size:13px;font-weight:bold;color:#888;min-width:20px;">1.</div><div class="avatar">${bilgi.ad.substring(0,2).toUpperCase()}</div><div class="oyuncu-adi">${bilgi.ad}</div><div class="oyuncu-puan">${toplamPuan} puan</div></div>`;
+}
+window.katilEkraniAc=()=>{
+  const ad=document.getElementById('ad-input').value.trim();
+  if(!ad){alert('Lütfen önce adınızı girin.');return;}
+  document.getElementById('katil-ad-goster').textContent='👤 '+ad;
+  document.getElementById('oda-kodu-input').value='';
+  goster('katil-ekran');
+};
+window.odayaKatil=async()=>{
+  const ad=document.getElementById('ad-input').value.trim();
+  const kod=document.getElementById('oda-kodu-input').value.trim().toUpperCase();
+  if(!ad){alert('Lütfen adınızı girin.');return;}
+  if(kod.length!==6){alert('Oda kodu 6 haneli olmalı.');return;}
+  const snap=await get(ref(db,`odalar/${kod}`));
+  if(!snap.exists()){alert('Oda bulunamadı.');return;}
+  bilgi={odaKodu:kod,ad,rol:'katilimci',oyuncuId:'oyuncu_'+Date.now()};
+  await set(ref(db,`odalar/${kod}/oyuncular/${bilgi.oyuncuId}`),{ad,puan:0,rol:'katilimci'});
+  document.getElementById('katil-bekle-ad').textContent='Hoş geldin, '+ad+'!';
+  goster('katil-bekle');
+  katilimciBekle(kod);
+};
+function kolayBekleIzle(kod){
+  onValue(ref(db,`odalar/${kod}/oyuncular`),snap=>{
+    const liste=Object.values(snap.val()||{});
+    document.getElementById('oyuncu-sayisi').textContent=liste.length;
+    document.getElementById('baslat-btn').disabled=liste.length<1;
+    document.getElementById('kolay-oyuncu-listesi').innerHTML=liste.map(o=>`<div class="oyuncu-satir"><div class="avatar">${initials(o.ad)}</div><div class="oyuncu-adi">${o.ad}</div><div style="font-size:11px;color:#aaa;">${o.rol==='kolay'?'Kolaylaştırıcı':'Katılımcı'}</div></div>`).join('');
+  });
+}
+function katilimciBekle(kod){
+  onValue(ref(db,`odalar/${kod}/oyuncular`),snap=>{
+    document.getElementById('katil-bekle-oyuncular').innerHTML='<p style="font-size:12px;color:#aaa;margin-bottom:6px;">Odadakiler:</p>'+Object.values(snap.val()||{}).map(o=>`<div class="oyuncu-satir"><div class="avatar">${initials(o.ad)}</div><div class="oyuncu-adi">${o.ad}</div></div>`).join('');
+  });
+  onValue(ref(db,`odalar/${kod}/durum`),snap=>{
+    if(snap.val()==='oynuyor'){mevcutKarar=0;toplamPuan=0;dogruSayi=0;get(ref(db,`odalar/${kod}/mevcutKarar`)).then(s=>{mevcutKarar=s.val()||0;oyunEkraniGoster(mevcutKarar);});izleKararDegisimi(kod);sureFirebaseDinle(kod);}
+    if(snap.val()==='bitti')sonuclariGoster(kod);
+  });
+}
+function sureFirebaseDinle(kod){
+  onValue(ref(db,`odalar/${kod}/sure_baslangic`),snap=>{
+    const baslangic=snap.val();if(!baslangic)return;
+    const gecen=Math.floor((Date.now()-baslangic)/1000),kalan=Math.max(0,SURE-gecen);
+    clearInterval(sureInterval);let k=kalan;sureyiGuncelle(k);
+    sureInterval=setInterval(()=>{k--;sureyiGuncelle(k);if(k<=0)clearInterval(sureInterval);},1000);
+  });
+}
+window.oyunuBaslat=async()=>{
+  const kod=bilgi.odaKodu,simdi=Date.now();
+  await update(ref(db,`odalar/${kod}`),{durum:'oynuyor',mevcutKarar:0,sure_baslangic:simdi});
+  mevcutKarar=0;toplamPuan=0;dogruSayi=0;
+  oyunEkraniGoster(0);izleKararDegisimi(kod);sureyiYonet(kod,0,simdi);
+};
+function sureyiYonet(kod,kIdx,baslangic){
+  clearInterval(sureInterval);let kalan=SURE;sureyiGuncelle(kalan);
+  sureInterval=setInterval(async()=>{
+    kalan--;sureyiGuncelle(kalan);
+    if(kalan<=0){clearInterval(sureInterval);const sonraki=kIdx+1,simdi=Date.now();
+      if(sonraki>=KARARLAR.length){await update(ref(db,`odalar/${kod}`),{durum:'bitti',mevcutKarar:sonraki});}
+      else{await update(ref(db,`odalar/${kod}`),{mevcutKarar:sonraki,sure_baslangic:simdi});oyunEkraniGoster(sonraki);sureyiYonet(kod,sonraki,simdi);}
+    }
+  },1000);
+}
+function izleKararDegisimi(kod){
+  onValue(ref(db,`odalar/${kod}/mevcutKarar`),snap=>{
+    const k=snap.val();if(k===null)return;
+    if(bilgi.rol==='katilimci'&&k!==mevcutKarar){mevcutKarar=k;if(k>=KARARLAR.length){sonuclariGoster(kod);return;}oyunEkraniGoster(k);}
+  });
+  if(bilgi.rol==='katilimci'){
+    onValue(ref(db,`odalar/${kod}/sure_baslangic`),snap=>{
+      const baslangic=snap.val();if(!baslangic)return;
+      const gecen=Math.floor((Date.now()-baslangic)/1000),kalan=Math.max(0,SURE-gecen);
+      clearInterval(sureInterval);let k=kalan;sureyiGuncelle(k);
+      sureInterval=setInterval(()=>{k--;sureyiGuncelle(k);if(k<=0)clearInterval(sureInterval);},1000);
+    });
+  }
+}
+const KARAKTERLER=[{sac:'#2C2C2A',giysi:'#185FA5',ten:'#F4A261',harf:'A'},{sac:'#4A1B0C',giysi:'#639922',ten:'#D4906A',harf:'B'},{sac:'#2C2C2A',giysi:'#7F77DD',ten:'#F4C49A',harf:'C'},{sac:'#633806',giysi:'#A32D2D',ten:'#E8A87C',harf:'D'}];
+function kisiSvg(k){return `<svg width="42" height="58" viewBox="0 0 42 58" style="flex-shrink:0;"><ellipse cx="21" cy="8" rx="8" ry="5" fill="${k.sac}"/><circle cx="21" cy="13" r="10" fill="${k.ten}"/><circle cx="17" cy="11" r="1.8" fill="#333"/><circle cx="25" cy="11" r="1.8" fill="#333"/><path d="M17 17 Q21 20 25 17" fill="none" stroke="#333" stroke-width="1.2" stroke-linecap="round"/><rect x="13" y="23" width="16" height="18" rx="4" fill="${k.giysi}"/><rect x="21" y="23" width="3" height="10" fill="white" opacity="0.25"/><rect x="9" y="24" width="5" height="13" rx="3" fill="${k.giysi}"/><rect x="28" y="24" width="5" height="13" rx="3" fill="${k.giysi}"/><rect x="14" y="41" width="6" height="15" rx="3" fill="${k.giysi}"/><rect x="22" y="41" width="6" height="15" rx="3" fill="${k.giysi}"/></svg>`;}
+function anlaticiSvg(){return `<svg width="46" height="62" viewBox="0 0 46 62" style="flex-shrink:0;margin-top:2px;"><ellipse cx="23" cy="8" rx="9" ry="5.5" fill="#633806"/><circle cx="23" cy="14" r="11" fill="#E8C99A"/><circle cx="19" cy="12" r="1.8" fill="#333"/><circle cx="27" cy="12" r="1.8" fill="#333"/><path d="M19 18 Q23 21 27 18" fill="none" stroke="#333" stroke-width="1.2" stroke-linecap="round"/><rect x="14" y="25" width="18" height="20" rx="4" fill="#2C2C2A"/><rect x="22" y="25" width="3" height="11" fill="white" opacity="0.2"/><rect x="9" y="26" width="6" height="15" rx="3" fill="#2C2C2A"/><rect x="31" y="26" width="6" height="15" rx="3" fill="#2C2C2A"/><rect x="16" y="45" width="6" height="16" rx="3" fill="#2C2C2A"/><rect x="24" y="45" width="6" height="16" rx="3" fill="#2C2C2A"/></svg>`;}
+function oyunEkraniGoster(idx){
+  goster('oyun');if(idx>=KARARLAR.length)return;
+  const k=KARARLAR[idx];
+  document.getElementById('karar-baslik-mini').textContent='Karar '+(idx+1)+' / '+KARARLAR.length;
+  document.getElementById('ilerleme-bar').innerHTML=KARARLAR.map((_,i)=>`<div class="adim ${i<idx?'tamamlandi':i===idx?'aktif':''}"></div>`).join('');
+  sureyiGuncelle(SURE);
+  const secenekHtml=k.secenekler.map((s,i)=>{const kr=KARAKTERLER[i];return `<button class="secenek karakter-secenek" onclick="window.sec(${idx},${i})" style="display:flex;align-items:center;gap:10px;padding:8px 10px;border:1.5px solid #ddd;background:#f9f9f9;border-radius:12px;width:100%;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent;-webkit-appearance:none;">${kisiSvg(kr)}<div style="display:flex;flex-direction:column;gap:2px;"><span style="font-size:10px;font-weight:bold;color:${kr.giysi};">${kr.harf}</span><span style="font-size:13px;color:#222;line-height:1.4;">${s}</span></div></button>`;}).join('');
+  document.getElementById('karar-alani').innerHTML=`<div class="card" style="padding:14px;"><div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;">${anlaticiSvg()}<div style="background:#EEF4FF;border:1.5px solid #B5D4F4;border-radius:4px 12px 12px 12px;padding:10px 12px;flex:1;"><div style="font-size:11px;font-weight:bold;color:#185FA5;margin-bottom:4px;">Karar ${idx+1} / ${KARARLAR.length} — ${k.baslik}</div><div style="font-size:13px;color:#222;line-height:1.5;">${k.durum}</div></div></div><div id="secenekler" style="display:flex;flex-direction:column;gap:7px;">${secenekHtml}</div><div id="geri-bildirim"></div></div>`;
+}
+window.sec=async(kIdx,sIdx)=>{
+  const k=KARARLAR[kIdx];
+  document.querySelectorAll('.karakter-secenek').forEach((b,i)=>{b.disabled=true;b.style.cursor='default';if(i===k.dogru){b.style.borderColor='#639922';b.style.background='#EAF3DE';}else if(i===sIdx){b.style.borderColor='#E24B4A';b.style.background='#FCEBEB';}});
+  const puan=k.puanlar[sIdx];toplamPuan+=puan;if(sIdx===k.dogru)dogruSayi++;
+  document.getElementById('anlik-puan').textContent=toplamPuan;
+  await update(ref(db,`odalar/${bilgi.odaKodu}/oyuncular/${bilgi.oyuncuId}`),{puan:toplamPuan});
+  const yorumMetin=k.yorumlar[sIdx];
+  const yorumRenk=puan===30?'background:#EAF3DE;border:1px solid #639922;color:#27500A;':puan===0?'background:#FCEBEB;border:1px solid #E24B4A;color:#791F1F;':'background:#FAEEDA;border:1px solid #EF9F27;color:#633806;';
+  document.getElementById('geri-bildirim').innerHTML=`<div class="yorum" style="margin-top:10px;${yorumRenk}">${yorumMetin}<br><strong>+${puan} puan</strong></div>`+((bilgi.rol==='kolay'||bilgi.rol==='solo')?`<button class="btn ana" style="margin-top:10px;" onclick="${bilgi.rol==='solo'?'window._soloSonraki':'window.sonrakiKarara'}(${kIdx})">Sonraki →</button>`:'');
+};
+window.sonrakiKarara=async(kIdx)=>{
+  clearInterval(sureInterval);const sonraki=kIdx+1,kod=bilgi.odaKodu,simdi=Date.now();
+  if(sonraki>=KARARLAR.length){await update(ref(db,`odalar/${kod}`),{durum:'bitti',mevcutKarar:sonraki});}
+  else{await update(ref(db,`odalar/${kod}`),{mevcutKarar:sonraki,sure_baslangic:simdi});oyunEkraniGoster(sonraki);sureyiYonet(kod,sonraki,simdi);}
+};
+async function sonuclariGoster(kod){
+  clearInterval(sureInterval);goster('sonuc');
+  const snap=await get(ref(db,`odalar/${kod}/oyuncular`));
+  const liste=Object.values(snap.val()||{}).sort((a,b)=>b.puan-a.puan);
+  const maxPuan=KARARLAR.reduce((a,k)=>a+Math.max(...k.puanlar),0);
+  const yuzde=Math.round(toplamPuan/maxPuan*100);
+  document.getElementById('benim-puanim').textContent=toplamPuan;
+  document.getElementById('dogru-sayi').textContent=dogruSayi+'/5';
+  document.getElementById('musteri-sonuc').textContent=yuzde>=60?'✓':'✗';
+  document.getElementById('sonuc-yorum').textContent=yuzde>=80?'Mükemmel! Müşteri kazanıldı. Empati ve somut adımlar fark yarattı.':yuzde>=60?'İyi gitti ama bazı anlarda fırsatlar kaçırıldı.':'Müşteri kaybedildi. Savunmacı yaklaşım ilişkiyi zayıflattı.';
+  document.getElementById('siralama-listesi').innerHTML=liste.map((o,i)=>`<div class="oyuncu-satir"><div style="font-size:13px;font-weight:bold;color:#888;min-width:20px;">${i+1}.</div><div class="avatar">${initials(o.ad)}</div><div class="oyuncu-adi">${o.ad}</div><div class="oyuncu-puan">${o.puan} puan</div></div>`).join('');
+}
+</script>
+</body>
+</html>
