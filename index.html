@@ -8,384 +8,373 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#1a1a2e;font-family:Arial,sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:16px;}
 #app{width:100%;max-width:560px;}
-.screen{display:none;}
-.screen.active{display:block;}
-.card{background:#fff;border-radius:12px;padding:20px;margin-bottom:12px;}
+.screen{display:none;}.screen.active{display:block;}
+.card{background:#fff;border-radius:12px;padding:18px;margin-bottom:10px;}
 .badge{display:inline-block;font-size:11px;padding:3px 10px;border-radius:20px;font-weight:bold;margin-bottom:10px;}
-.badge.kriz{background:#FCEBEB;color:#A32D2D;}
-.badge.karar{background:#E6F1FB;color:#0C447C;}
+.badge.kriz{background:#FCEBEB;color:#791F1F;}
 .badge.sonuc{background:#EAF3DE;color:#27500A;}
-.badge.senaryo{background:#F3E8FF;color:#6D28D9;}
-h1{font-size:20px;font-weight:bold;color:#222;margin-bottom:8px;}
-h2{font-size:16px;font-weight:bold;color:#222;margin-bottom:10px;}
-p{font-size:13px;color:#555;line-height:1.6;margin-bottom:10px;}
-input[type=text]{width:100%;padding:12px;border:1px solid #ddd;border-radius:8px;font-size:14px;margin-bottom:10px;outline:none;}
-input[type=text]:focus{border-color:#378ADD;}
-.btn{display:inline-block;padding:11px 22px;border-radius:8px;border:none;font-size:14px;cursor:pointer;font-weight:bold;}
-.btn.ana{background:#185FA5;color:#fff;}
-.btn.ana:hover{background:#0C447C;}
-.btn.gri{background:#f0f0f0;color:#333;border:1px solid #ddd;}
-.btn:disabled{opacity:0.5;cursor:default;}
-.secenek{width:100%;text-align:left;padding:12px 14px;margin-bottom:8px;border:1px solid #ddd;border-radius:8px;background:#f9f9f9;cursor:pointer;font-size:13px;color:#222;-webkit-appearance:none;-webkit-tap-highlight-color:transparent;outline:none;}
-.secenek:active:not(:disabled){background:#f9f9f9;border-color:#ddd;}
-.yorum{border-radius:8px;padding:12px;font-size:13px;margin-top:10px;line-height:1.5;}
-.ilerleme{display:flex;gap:6px;margin-bottom:12px;}
-.adim{flex:1;height:5px;border-radius:3px;background:#ddd;}
-.adim.tamamlandi{background:#378ADD;}
-.adim.aktif{background:#85B7EB;}
-.puan-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;}
-.puan-kart{background:#f5f5f5;border-radius:8px;padding:12px;text-align:center;}
-.puan-kart .label{font-size:11px;color:#888;margin-bottom:4px;}
-.puan-kart .val{font-size:20px;font-weight:bold;color:#222;}
-.oyuncu-satir{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid #f0f0f0;}
-.avatar{width:32px;height:32px;border-radius:50%;background:#B5D4F4;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:bold;color:#0C447C;flex-shrink:0;}
-.oyuncu-adi{font-size:13px;color:#222;flex:1;}
-.oyuncu-puan{font-size:13px;font-weight:bold;color:#185FA5;}
-.bekle-ekran{text-align:center;padding:30px 20px;}
-.oda-kodu{font-size:36px;font-weight:bold;color:#185FA5;letter-spacing:8px;margin:10px 0;}
-.sure-alan{background:#fff;border-radius:12px;padding:14px 20px;margin-bottom:12px;display:flex;align-items:center;gap:14px;}
-.sure-daire-wrap{position:relative;width:56px;height:56px;flex-shrink:0;}
-.sure-daire-wrap svg{position:absolute;top:0;left:0;transform:rotate(-90deg);}
-.sure-sayi{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:18px;font-weight:bold;color:#222;line-height:1;}
-.sure-bar-wrap{flex:1;}
-.sure-bar-label{display:flex;justify-content:space-between;font-size:12px;color:#888;margin-bottom:5px;}
-.sure-bar-bg{height:10px;background:#eee;border-radius:5px;overflow:hidden;}
-.sure-bar-fill{height:100%;border-radius:5px;transition:width 1s linear,background 0.5s;}
-.sure-bar-fill.yesilden{background:#639922;}
-.sure-bar-fill.saridan{background:#EF9F27;}
-.sure-bar-fill.kildan{background:#E24B4A;}
-.header-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
-.puan-chip{background:#E6F1FB;color:#0C447C;border-radius:20px;padding:4px 12px;font-size:12px;font-weight:bold;}
-.senaryo-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
-.senaryo-kart{border:1.5px solid #ddd;border-radius:10px;padding:14px;cursor:pointer;background:#f9f9f9;transition:all 0.2s;}
-.senaryo-kart:hover{border-color:#378ADD;background:#EEF4FF;}
-.senaryo-kart.secili{border-color:#185FA5;background:#EEF4FF;}
-.senaryo-ikon{font-size:26px;margin-bottom:6px;}
-.senaryo-baslik{font-size:13px;font-weight:bold;color:#222;margin-bottom:2px;}
-.senaryo-aciklama{font-size:11px;color:#888;}
-.s-btn{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1.5px solid #ddd;background:#f9f9f9;border-radius:12px;width:100%;text-align:left;cursor:pointer;opacity:0;transform:translateX(-12px);transition:opacity 0.4s,transform 0.4s;-webkit-tap-highlight-color:transparent;-webkit-appearance:none;}
+.badge.senaryo{background:#F3E8FF;color:#3C3489;}
+h1{font-size:18px;font-weight:bold;color:#222;margin-bottom:6px;}
+h2{font-size:15px;font-weight:bold;color:#222;margin-bottom:8px;}
+p{font-size:13px;color:#555;line-height:1.6;margin-bottom:8px;}
+input[type=text]{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;font-size:14px;margin-bottom:10px;outline:none;}
+.btn{padding:10px 18px;border-radius:8px;border:1px solid #ddd;font-size:13px;cursor:pointer;font-weight:bold;background:#fff;color:#222;}
+.btn.ana{background:#185FA5;border-color:#185FA5;color:#fff;}
+.gostergeler{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:10px;}
+.gosterge{background:#f5f5f5;border-radius:8px;padding:9px 10px;}
+.gosterge-label{font-size:10px;color:#888;margin-bottom:3px;}
+.gosterge-val{font-size:14px;font-weight:bold;color:#222;}
+.gosterge-bar{height:5px;background:#e0e0e0;border-radius:3px;margin-top:4px;overflow:hidden;}
+.gosterge-fill{height:100%;border-radius:3px;transition:width 0.6s;}
+.senaryo-giris{background:#185FA5;border-radius:12px;padding:18px;margin-bottom:10px;}
+.senaryo-giris h1{color:#fff;font-size:19px;margin-bottom:4px;}
+.senaryo-giris p{color:#B5D4F4;margin-bottom:0;}
+.alarm{background:#FCEBEB;border:1px solid #F09595;border-radius:8px;padding:10px 12px;font-size:12.5px;color:#791F1F;margin-bottom:10px;display:flex;gap:8px;align-items:flex-start;}
+.karakter-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:10px;}
+.karakter-kart{border:1.5px solid #ddd;border-radius:8px;padding:10px;cursor:pointer;background:#f9f9f9;display:flex;flex-direction:column;align-items:center;text-align:center;gap:4px;}
+.karakter-kart.secili{border-color:#185FA5;background:#EEF4FF;}
+.karakter-ikon{font-size:22px;}
+.karakter-baslik{font-size:12px;font-weight:bold;color:#222;}
+.karakter-aciklama{font-size:10px;color:#888;}
+.sure-alan{background:#fff;border:1px solid #eee;border-radius:8px;padding:10px 14px;margin-bottom:8px;display:flex;align-items:center;gap:10px;}
+.sure-daire{position:relative;width:44px;height:44px;flex-shrink:0;}
+.sure-daire svg{position:absolute;top:0;left:0;transform:rotate(-90deg);}
+.sure-no{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:13px;font-weight:bold;color:#222;}
+.sure-bar-bg{height:6px;background:#eee;border-radius:3px;overflow:hidden;margin-top:3px;}
+.sure-bar-fill{height:100%;border-radius:3px;background:#639922;transition:width 1s linear,background 0.5s;}
+.s-btn{display:flex;align-items:center;gap:8px;padding:8px 10px;border:1.5px solid #ddd;background:#f9f9f9;border-radius:10px;width:100%;text-align:left;cursor:pointer;opacity:0;transform:translateX(-10px);transition:opacity 0.35s,transform 0.35s;margin-bottom:6px;}
 .s-btn.gorunsun{opacity:1;transform:translateX(0);}
 .s-btn.dogru{border-color:#639922!important;background:#EAF3DE!important;}
 .s-btn.yanlis{border-color:#E24B4A!important;background:#FCEBEB!important;}
 .s-btn:disabled{cursor:default;}
-.skor-satir{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;margin-bottom:6px;background:#f9f9f9;}
-.skor-satir.birinci{background:#FFF8E6;border:1.5px solid #EF9F27;}
-.skor-no{font-size:13px;font-weight:bold;color:#888;min-width:24px;}
-.skor-ad{font-size:13px;color:#222;flex:1;}
-.skor-puan{font-size:13px;font-weight:bold;color:#185FA5;}
-.skor-dogru{font-size:11px;color:#888;margin-left:4px;}
-.konfeti-wrap{position:relative;height:50px;overflow:hidden;margin-bottom:8px;}
-.konfeti-p{position:absolute;width:8px;height:8px;border-radius:2px;animation:kon 1.5s ease-in forwards;}
-@keyframes kon{0%{transform:translateY(-10px) rotate(0);opacity:1;}100%{transform:translateY(70px) rotate(720deg);opacity:0;}}
-@media(max-width:400px){.puan-grid{grid-template-columns:1fr 1fr;}.senaryo-grid{grid-template-columns:1fr 1fr;}}
+.s-metin{font-size:12.5px;color:#222;line-height:1.35;}
+.yorum-kutu{border-radius:8px;padding:10px;font-size:12.5px;margin-top:8px;line-height:1.5;}
+.konfeti-wrap{position:relative;height:44px;overflow:hidden;margin-bottom:6px;}
+.konfeti-p{position:absolute;width:7px;height:7px;border-radius:2px;animation:kon 1.4s ease-in forwards;}
+@keyframes kon{0%{transform:translateY(-10px) rotate(0);opacity:1;}100%{transform:translateY(60px) rotate(720deg);opacity:0;}}
+.ilerleme{display:flex;gap:4px;margin-bottom:8px;}
+.adim{flex:1;height:4px;border-radius:2px;background:#ddd;}
+.adim.tamam{background:#378ADD;}.adim.aktif{background:#85B7EB;}
+.puan-chip{background:#E6F1FB;color:#0C447C;border-radius:20px;padding:3px 10px;font-size:11px;font-weight:bold;}
+.header-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;}
+.asama-bilgi{background:#f5f5f5;border-radius:8px;padding:7px 10px;font-size:11px;color:#888;margin-bottom:8px;display:flex;align-items:center;gap:6px;flex-wrap:wrap;}
+.asama-noktalar{display:flex;gap:5px;}
+.asama-nokta{width:9px;height:9px;border-radius:50%;background:#ddd;}
+.asama-nokta.tamam{background:#639922;}.asama-nokta.aktif{background:#185FA5;}
+.rozet-kart{background:#FFF8E6;border:1px solid #EF9F27;border-radius:10px;padding:10px 14px;display:flex;align-items:center;gap:10px;margin-top:8px;}
+.satis-karti{background:#185FA5;border-radius:12px;padding:18px;margin-top:10px;text-align:center;}
+.satis-karti h2{color:#fff;margin-bottom:6px;}
+.satis-karti p{color:#B5D4F4;margin-bottom:12px;}
+.satis-btn{display:block;padding:10px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:12.5px;text-align:center;margin-bottom:7px;}
+@media(max-width:400px){.gostergeler{grid-template-columns:1fr 1fr;}.karakter-grid{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
 <div id="app">
-  <div id="senaryo-secim" class="screen active">
-    <div class="card">
-      <div class="badge senaryo">Senaryo Seç</div>
-      <h1>Kriz Masası</h1>
-      <p>Adınızı girin ve hangi konuda kendinizi test etmek istediğinizi seçin.</p>
-      <input type="text" id="ad-input" placeholder="Adınızı girin..." maxlength="20"/>
-      <div class="senaryo-grid">
-        <div class="senaryo-kart secili" onclick="senaryoSec(this,'kriz')">
-          <div class="senaryo-ikon">🔥</div>
-          <div class="senaryo-baslik">Kriz Yönetimi</div>
-          <div class="senaryo-aciklama">Müşteri kaybetme krizi</div>
-        </div>
-        <div class="senaryo-kart" onclick="senaryoSec(this,'satis')">
-          <div class="senaryo-ikon">🎯</div>
-          <div class="senaryo-baslik">Satış Ekibi</div>
-          <div class="senaryo-aciklama">Zor müşteriyle görüşme</div>
-        </div>
-        <div class="senaryo-kart" onclick="senaryoSec(this,'liderlik')">
-          <div class="senaryo-ikon">🧭</div>
-          <div class="senaryo-baslik">Liderlik</div>
-          <div class="senaryo-aciklama">Ekip çatışması çözümü</div>
-        </div>
-        <div class="senaryo-kart" onclick="senaryoSec(this,'iletisim')">
-          <div class="senaryo-ikon">💬</div>
-          <div class="senaryo-baslik">İletişim</div>
-          <div class="senaryo-aciklama">Zor geri bildirim verme</div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:8px;">
-        <button class="btn ana" onclick="soloBaslat()" style="width:100%;font-size:15px;padding:13px;">▶ Hemen oyna</button>
-        <div style="display:flex;gap:8px;">
-          <button class="btn gri" onclick="odaOlustur()" style="flex:1;font-size:12px;">👥 Grup odası aç</button>
-          <button class="btn gri" onclick="katilEkraniAc()" style="flex:1;font-size:12px;">🔑 Odaya katıl</button>
-        </div>
-      </div>
+
+<div id="giris" class="screen active">
+  <div class="senaryo-giris">
+    <div class="badge kriz" style="background:rgba(255,255,255,0.15);color:#fff;">Kriz Senaryosu</div>
+    <h1>Kuzey Holding krizi</h1>
+    <p>Şirketinizin en büyük müşterisi — 3 yıllık ortak.</p>
+  </div>
+  <div class="alarm">
+    <span>⚠️</span>
+    <div><strong>Az önce haber aldınız:</strong> Kuzey Holding CEO'su Mehmet Aksoy sözleşmeyi 48 saat içinde feshetmek istediğini bildirdi. Bu müşteri cironuzun %40'ını oluşturuyor. 5 farklı aşamada krizi yöneteceksiniz — her aşamayı başarıyla bitirince rozet kazanırsınız.</div>
+  </div>
+  <div class="card">
+    <div class="badge senaryo">Başlangıç durumu</div>
+    <div class="gostergeler">
+      <div class="gosterge"><div class="gosterge-label">Müşteri güveni</div><div class="gosterge-val">45/100</div><div class="gosterge-bar"><div class="gosterge-fill" style="width:45%;background:#EF9F27;"></div></div></div>
+      <div class="gosterge"><div class="gosterge-label">Bütçe</div><div class="gosterge-val">100 birim</div><div class="gosterge-bar"><div class="gosterge-fill" style="width:100%;background:#639922;"></div></div></div>
+      <div class="gosterge"><div class="gosterge-label">Kalan süre</div><div class="gosterge-val">48 saat</div><div class="gosterge-bar"><div class="gosterge-fill" style="width:100%;background:#185FA5;"></div></div></div>
     </div>
   </div>
-  <div id="katil-ekran" class="screen">
-    <div class="card">
-      <div class="badge karar">Katılımcı</div>
-      <h1>Odaya katıl</h1>
-      <p id="katil-ad-goster" style="font-size:14px;color:#185FA5;font-weight:bold;margin-bottom:10px;"></p>
-      <input type="text" id="oda-kodu-input" placeholder="Oda kodunu girin (6 hane)..." maxlength="6" style="text-transform:uppercase;letter-spacing:4px;font-size:18px;"/>
-      <button class="btn ana" onclick="odayaKatil()">Katıl</button><br><br>
-      <button class="btn gri" onclick="goster('senaryo-secim')">← Geri</button>
+  <div class="card">
+    <div class="badge senaryo">İlk yetkinliğinizi seçin</div>
+    <h2>Krizi hangi alanla çözmeye başlayacaksınız?</h2>
+    <p>5 aşamadan geçeceksiniz. Hangisinden başlarsanız başlayın, diğerlerine otomatik geçersiniz.</p>
+    <div class="karakter-grid">
+      <div class="karakter-kart secili" onclick="secYetkinlik(this,'iletisim')"><div class="karakter-ikon">💬</div><div class="karakter-baslik">İletişim</div><div class="karakter-aciklama">→ 🗣️ Empati Ustası</div></div>
+      <div class="karakter-kart" onclick="secYetkinlik(this,'satis')"><div class="karakter-ikon">🎯</div><div class="karakter-baslik">Satış & İkna</div><div class="karakter-aciklama">→ 🎯 İkna Dehası</div></div>
+      <div class="karakter-kart" onclick="secYetkinlik(this,'liderlik')"><div class="karakter-ikon">🧭</div><div class="karakter-baslik">Liderlik</div><div class="karakter-aciklama">→ 🧭 Lider Ruh</div></div>
+      <div class="karakter-kart" onclick="secYetkinlik(this,'kriz')"><div class="karakter-ikon">🔥</div><div class="karakter-baslik">Kriz Yönetimi</div><div class="karakter-aciklama">→ 🔥 Kriz Kahraman</div></div>
+      <div class="karakter-kart" onclick="secYetkinlik(this,'dayaniklilik')" style="grid-column:span 2;"><div class="karakter-ikon">🛡️</div><div class="karakter-baslik">Duygusal Dayanıklılık</div><div class="karakter-aciklama">→ 🛡️ Çelik Zihin</div></div>
     </div>
-  </div>
-  <div id="kolay-bekle" class="screen">
-    <div class="card">
-      <div class="badge karar">Kolaylaştırıcı</div>
-      <h2>Katılımcıları bekliyor...</h2>
-      <p>Bu kodu katılımcılarla paylaşın:</p>
-      <div class="oda-kodu" id="goster-oda-kodu">——</div>
-      <div id="kolay-oyuncu-listesi" style="margin:14px 0;"></div>
-      <button class="btn ana" id="baslat-btn" onclick="oyunuBaslat()" disabled>Oyunu başlat (<span id="oyuncu-sayisi">0</span> kişi)</button>
-    </div>
-  </div>
-  <div id="katil-bekle" class="screen">
-    <div class="card bekle-ekran">
-      <div style="font-size:48px;margin-bottom:10px;">⏳</div>
-      <h2>Kolaylaştırıcı oyunu başlatmasını bekliyor...</h2>
-      <p id="katil-bekle-ad" style="margin-top:8px;"></p>
-      <div id="katil-bekle-oyuncular" style="margin-top:14px;"></div>
-    </div>
-  </div>
-  <div id="oyun" class="screen">
-    <div class="ilerleme" id="ilerleme-bar"></div>
-    <div class="header-bar">
-      <span class="puan-chip">★ <span id="anlik-puan">0</span> puan</span>
-      <span style="font-size:12px;color:#888;" id="karar-baslik-mini"></span>
-    </div>
-    <div class="sure-alan">
-      <div class="sure-daire-wrap">
-        <svg width="56" height="56" viewBox="0 0 56 56">
-          <circle cx="28" cy="28" r="24" fill="none" stroke="#eee" stroke-width="5"/>
-          <circle id="sure-daire" cx="28" cy="28" r="24" fill="none" stroke="#639922" stroke-width="5" stroke-dasharray="150.8" stroke-dashoffset="0" stroke-linecap="round" style="transition:stroke-dashoffset 1s linear,stroke 0.5s;"/>
-        </svg>
-        <div class="sure-sayi" id="sure-sayi">30</div>
-      </div>
-      <div class="sure-bar-wrap">
-        <div class="sure-bar-label"><span>Kalan süre</span><span id="sure-yuzde">100%</span></div>
-        <div class="sure-bar-bg"><div class="sure-bar-fill yesilden" id="sure-bar-fill" style="width:100%;"></div></div>
-      </div>
-    </div>
-    <div id="karar-alani"></div>
-  </div>
-  <div id="sonuc" class="screen">
-    <div class="card">
-      <div class="konfeti-wrap" id="konfeti-wrap"></div>
-      <div class="badge sonuc">Oyun bitti</div>
-      <h1 id="sonuc-baslik">Sonuçlar</h1>
-      <div class="puan-grid">
-        <div class="puan-kart"><div class="label">Puanın</div><div class="val" id="benim-puanim">—</div></div>
-        <div class="puan-kart"><div class="label">Doğru</div><div class="val" id="dogru-sayi">—</div></div>
-        <div class="puan-kart"><div class="label">Sonuç</div><div class="val" id="musteri-sonuc">—</div></div>
-      </div>
-      <div id="sonuc-yorum" class="yorum" style="background:#FAEEDA;border:1px solid #EF9F27;color:#633806;"></div>
-    </div>
-    <div class="card">
-      <h2>🏆 Sıralama</h2>
-      <div id="siralama-listesi"></div>
-    </div>
-    <div class="card" style="margin-bottom:0;">
-      <h2>Yansıma soruları</h2>
-      <p>• Hangi kararı almak en zordu? Neden?</p>
-      <p>• Gerçek hayatta nasıl davranırdınız?</p>
-      <p style="margin-bottom:14px;">• Takım kararı bireysel karardan iyi miydi?</p>
-      <button class="btn gri" onclick="goster('senaryo-secim')">↺ Tekrar oyna</button>
-    </div>
-    <div class="card" style="margin-bottom:0;background:linear-gradient(135deg,#1a1a2e,#185FA5);border:none;">
-      <div style="text-align:center;padding:8px 0;">
-        <div style="font-size:22px;margin-bottom:8px;">🚀</div>
-        <h2 style="color:#fff;font-size:16px;margin-bottom:6px;">Bu deneyimi ekibinizle yaşayın</h2>
-        <p style="color:#B5D4F4;font-size:13px;margin-bottom:16px;">Firmanıza özel senaryo ve sorularla ekibinize özel oyun tasarlayalım.</p>
-        <div style="display:flex;flex-direction:column;gap:8px;">
-          <a href="https://wa.me/?text=Kriz+Masasi+oyununu+denedim,+ekibimize+ozel+tasarim+hakkinda+bilgi+almak+istiyorum" target="_blank" style="display:block;background:#25D366;color:#fff;padding:11px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:13px;text-align:center;">💬 WhatsApp ile iletişime geç</a>
-          <a href="mailto:?subject=Ekibimize%20Özel%20Oyun&body=Kriz%20Masası%20oyununu%20denedim." style="display:block;background:rgba(255,255,255,0.15);color:#fff;padding:11px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:13px;text-align:center;border:1px solid rgba(255,255,255,0.3);">✉️ E-posta gönder</a>
-        </div>
-      </div>
-    </div>
+    <input type="text" id="ad-input" placeholder="Adınızı girin..." maxlength="20"/>
+    <button class="btn ana" onclick="oyunuBaslat()" style="width:100%;padding:12px;font-size:14px;">▶ Krizi çözmeye başla</button>
   </div>
 </div>
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getDatabase, ref, set, get, onValue, update } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
-const firebaseConfig = {apiKey:"AIzaSyAuBmIcCVJi33Ni9V3q761uq_h7A-KcqD4",authDomain:"kriz-masasi.firebaseapp.com",databaseURL:"https://kriz-masasi-default-rtdb.firebaseio.com",projectId:"kriz-masasi",storageBucket:"kriz-masasi.firebasestorage.app",messagingSenderId:"865050265845",appId:"1:865050265845:web:17d80b7e7bd10128669dbc"};
-const app=initializeApp(firebaseConfig);
-const db=getDatabase(app);
-const SURE=30,CEVRE=2*Math.PI*24;
+
+<div id="oyun" class="screen">
+  <div class="gostergeler">
+    <div class="gosterge"><div class="gosterge-label">Müşteri güveni</div><div class="gosterge-val" id="gv-deger">45/100</div><div class="gosterge-bar"><div class="gosterge-fill" id="gv-bar" style="width:45%;background:#EF9F27;"></div></div></div>
+    <div class="gosterge"><div class="gosterge-label">Bütçe</div><div class="gosterge-val" id="butce-deger">100</div><div class="gosterge-bar"><div class="gosterge-fill" id="butce-bar" style="width:100%;background:#639922;"></div></div></div>
+    <div class="gosterge"><div class="gosterge-label">Kalan süre</div><div class="gosterge-val" id="sure-deger">48 saat</div><div class="gosterge-bar"><div class="gosterge-fill" id="sure-karar-bar" style="width:100%;background:#185FA5;"></div></div></div>
+  </div>
+  <div class="asama-bilgi">
+    <span id="asama-yazi">Aşama 1/5</span>
+    <div class="asama-noktalar" id="asama-noktalar"></div>
+    <span id="asama-kategori" style="font-weight:bold;color:#222;"></span>
+  </div>
+  <div class="ilerleme" id="ilerleme-bar"></div>
+  <div class="header-bar">
+    <span class="puan-chip">★ <span id="anlik-puan">0</span> puan</span>
+    <span style="font-size:11px;color:#888;" id="karar-mini"></span>
+  </div>
+  <div class="sure-alan">
+    <div class="sure-daire">
+      <svg width="44" height="44" viewBox="0 0 44 44">
+        <circle cx="22" cy="22" r="18" fill="none" stroke="#eee" stroke-width="4"/>
+        <circle id="sure-daire-el" cx="22" cy="22" r="18" fill="none" stroke="#639922" stroke-width="4" stroke-dasharray="113" stroke-dashoffset="0" stroke-linecap="round" style="transition:stroke-dashoffset 1s linear,stroke 0.5s;"/>
+      </svg>
+      <div class="sure-no" id="sure-sayi">30</div>
+    </div>
+    <div style="flex:1;">
+      <div style="display:flex;justify-content:space-between;font-size:10px;color:#888;"><span>Karar süresi</span><span id="sure-yuzde">100%</span></div>
+      <div class="sure-bar-bg"><div class="sure-bar-fill" id="sure-bar-fill" style="width:100%;"></div></div>
+    </div>
+  </div>
+  <div id="karar-alani"></div>
+</div>
+
+<div id="ara-sonuc" class="screen">
+  <div class="card">
+    <div class="konfeti-wrap" id="ara-konfeti"></div>
+    <div class="badge" id="ara-badge">Ara sonuç</div>
+    <h1 id="ara-baslik">—</h1>
+    <div class="gostergeler" style="margin-top:8px;">
+      <div class="gosterge"><div class="gosterge-label">Puan</div><div class="gosterge-val" id="ara-puan">—</div></div>
+      <div class="gosterge"><div class="gosterge-label">Güven</div><div class="gosterge-val" id="ara-guven">—</div></div>
+      <div class="gosterge"><div class="gosterge-label">Bütçe</div><div class="gosterge-val" id="ara-butce">—</div></div>
+    </div>
+    <div id="ara-yorum" class="yorum-kutu" style="margin-top:6px;"></div>
+    <div id="ara-rozetler"></div>
+  </div>
+  <div class="card">
+    <div class="badge senaryo" id="sonraki-badge">Sıradaki aşama</div>
+    <h2 id="sonraki-baslik">—</h2>
+    <p id="sonraki-metin"></p>
+    <button class="btn ana" onclick="sonrakiAsamayaGec()" style="width:100%;padding:11px;" id="sonraki-btn">Devam et →</button>
+  </div>
+</div>
+
+<div id="sonuc" class="screen">
+  <div class="card">
+    <div class="konfeti-wrap" id="konfeti-wrap"></div>
+    <div class="badge sonuc">Oyun bitti — 5 aşama tamamlandı</div>
+    <h1 id="sonuc-baslik">Sonuçlar</h1>
+    <div class="gostergeler">
+      <div class="gosterge"><div class="gosterge-label">Toplam puan</div><div class="gosterge-val" id="toplam-puan">—</div></div>
+      <div class="gosterge"><div class="gosterge-label">Müşteri güveni</div><div class="gosterge-val" id="final-guven">—</div></div>
+      <div class="gosterge"><div class="gosterge-label">Kalan bütçe</div><div class="gosterge-val" id="final-butce">—</div></div>
+    </div>
+    <div id="sonuc-yorum" class="yorum-kutu"></div>
+    <div id="sonuc-rozetler" style="margin-top:10px;"></div>
+  </div>
+  <div class="card">
+    <h2>🏆 Sıralama</h2>
+    <div id="siralama"></div>
+  </div>
+  <div class="card" style="margin-bottom:0;">
+    <h2>Yansıma soruları</h2>
+    <p>• En zor karar hangisiydi? Neden?</p>
+    <p>• Hangi yetkinlikte kendinizi güçlü hissettiniz?</p>
+    <p style="margin-bottom:10px;">• Gerçek hayatta farklı mı davranırdınız?</p>
+    <button class="btn" onclick="goster('giris')">↺ Tekrar oyna</button>
+  </div>
+  <div class="satis-karti">
+    <h2>Bu deneyimi ekibinizle yaşayın</h2>
+    <p>Firmanıza özel senaryo ve sorularla ekibinize özel oyun tasarlayalım.</p>
+    <a href="https://wa.me/?text=Kriz+Masasi+oyununu+denedim,+ekibimize+ozel+tasarim+hakkinda+bilgi+almak+istiyorum" target="_blank" class="satis-btn" style="background:#25D366;color:#fff;">💬 WhatsApp ile iletişime geç</a>
+    <a href="mailto:?subject=Ekibimize%20Özel%20Oyun" class="satis-btn" style="background:rgba(255,255,255,0.15);color:#fff;border:1px solid rgba(255,255,255,0.3);">✉️ E-posta gönder</a>
+  </div>
+</div>
+
+</div>
+<script>
+const ASAMA_SIRASI={iletisim:'satis',satis:'liderlik',liderlik:'kriz',kriz:'dayaniklilik',dayaniklilik:'iletisim'};
+const KATEGORI_ISIMLERI={iletisim:'💬 İletişim',satis:'🎯 Satış & İkna',liderlik:'🧭 Liderlik',kriz:'🔥 Kriz Yönetimi',dayaniklilik:'🛡️ Duygusal Dayanıklılık'};
+const ROZETLER={iletisim:{ikon:'🗣️',isim:'Empati Ustası',ac:'İletişim aşamasını başarıyla tamamladınız!'},satis:{ikon:'🎯',isim:'İkna Dehası',ac:'Satış & İkna aşamasını başarıyla tamamladınız!'},liderlik:{ikon:'🧭',isim:'Lider Ruh',ac:'Liderlik aşamasını başarıyla tamamladınız!'},kriz:{ikon:'🔥',isim:'Kriz Kahraman',ac:'Kriz Yönetimi aşamasını başarıyla tamamladınız!'},dayaniklilik:{ikon:'🛡️',isim:'Çelik Zihin',ac:'Duygusal Dayanıklılık aşamasını başarıyla tamamladınız!'},tum:{ikon:'⭐',isim:'Kuzey Yıldızı',ac:'Tüm 5 aşamayı tamamladınız!'},altin:{ikon:'💎',isim:'Altın Direktör',ac:'Tüm aşamaları %80 üzeri puanla tamamladınız!'}};
+
 const TUM_SENARYOLAR={
-kriz:[
-{baslik:"Müşteri sizi arıyor",durum:"Büyük müşteriniz CEO'su aradı: 'Beklediğimiz sonuçları alamıyoruz, sözleşmeyi feshedebiliriz.' Ne yaparsınız?",secenekler:["Ben olsam önce dinler, soru sorar, toplantı talep ederdim.","Hemen özür diler, sorunu çözeceğimizi söylerdim.","Fiyat indirimi teklif ederdim, belki kalırlar.","Hukuk departmanına haber verirdim, önce güvence alalım."],dogru:0,puanlar:[30,10,5,0],yorumlar:["✓ Doğru! Önce dinlemek en güçlü hamledir. Müşteri duyulmak istiyor.","~ Özür tek başına yetmez. Somut toplantı talebi olmadan söz havada kalır.","~ Fiyat indirimi ilişkiyi değil fiyatı çözer. Önce sorunu anlamak gerek.","✗ Hukuki adım ilişkiyi tamamen bitirir. Diyalog kapısını açık tutun."]},
-{baslik:"Toplantı hazırlığı",durum:"48 saat içinde müşteri toplantısı var. Ekibiniz nasıl hazırlanmalı?",secenekler:["Güçlü bir sunum hazırlayalım, görsel etki yapalım!","Rakiplerin ne teklif ettiğine bir bakalım bence.","Üst yönetimi de alalım yanımıza, ağırlık koyalım.","Müşterinin geçmiş şikayetlerini analiz edelim, asıl sorunu anlayalım."],dogru:3,puanlar:[5,10,15,30],yorumlar:["~ Görseller güzel ama müşteriyi ikna etmez. İçerik formdan önemli.","~ Rakipleri bilmek faydalı ama müşteri neden ayrılmak istiyor?","~ Güç gösterisi yapar ama şikayetlere cevap vermez.","✓ Doğru! Geçmiş şikayetleri anlamadan toplantıya girmek fırsatı kaybettirir."]},
-{baslik:"Toplantıda gerginlik",durum:"Müşteri ekibi çok sert: 'Hiç sözünüzü tutmadınız!' Nasıl yanıt verirsiniz?",secenekler:["Biz de elimizden geleni yaptık, bunu kabul etmiyorum!","Haklısınız, sizi dinliyorum. Birlikte çözelim.","Bugün verimli olmaz, toplantıyı erteleyelim.","Şimdilik sessiz kalayım, fırtına geçer."],dogru:1,puanlar:[0,30,5,5],yorumlar:["✗ Savunmaya geçmek gerginliği tırmandırır ve müşteriyi uzaklaştırır.","✓ Doğru! Empati ve kabul diyalog kapısını açar.","~ Ertelemek sorunu çözmez. Şu an fırsatı kaçırmayın.","~ Sessiz kalmak pasif görünür. Müşteri yanıt bekliyor."]},
-{baslik:"Çözüm teklifi",durum:"Müşteri dinlemeye hazır. Ne teklif edersiniz?",secenekler:["Ücretsiz ekstra hizmet ekleyelim, iyi niyet gösterelim.","Sözleşme uzatmada indirim yapalım, kalsınlar.","Somut bir plan sunalım: ne yapacağız, kim yapacak, ne zaman bitecek.","Yeni bir proje yöneticisi atayalım, taze başlangıç olur."],dogru:2,puanlar:[10,15,30,10],yorumlar:["~ İyi niyet gösterir ama somut adımlar daha etkili olur.","~ İndirim müşteriyi tutabilir ama güveni geri kazandırmaz.","✓ Doğru! Net eylem planı güven yaratır. Ne, kim, ne zaman şart.","~ Yeni yönetici süreci uzatır. Önce net bir plan sunun."]},
-{baslik:"Toplantı sonu",durum:"Müşteri 'düşüneceğiz' dedi, toplantı bitti. Sıradaki adımınız ne?",secenekler:["Bekleyelim, karar versinler, baskı yapmayalım.","Hemen arayalım, net bir cevap alalım.","Artık bu müşteriye takılmayalım, ilerleyelim.","Teşekkür maili atalım ve eylem planını yazılı gönderelim."],dogru:3,puanlar:[5,0,0,30],yorumlar:["~ Pasif beklemek profesyonel değil. İnisiyatif alın.","✗ Hemen aramak baskı yaratır ve müşteriyi soğutur.","✗ Müşteriyi erken bırakmak ilişkiyi tamamen bitirir.","✓ Doğru! Yazılı teşekkür ve eylem planı profesyonellik gösterir."]}
+iletisim:[
+{baslik:"İlk temas",durum:"CEO'nun asistanı sizi aradı. Sizi bağlamadan önce ne yaparsınız?",secenekler:["Meşgul olduğumu söyler, yarın aramalarını isterim.","Hemen bağlanmasını isterim.","'Bir dakika' deyip durumu hızlıca gözden geçiririm.","Ekibimden birinin almasını isterim."],dogru:2,puanlar:[0,10,30,5],yorumlar:["✗ Ertelemek güvensizlik sinyali verir.","~ Hazırlıksız konuşmak fırsatı kaçırtabilir.","✓ Doğru! 30 saniyelik hazırlık konuşmanın seyrini değiştirir.","~ Sorumluluktan kaçmak ilişkiyi zedeler."],guvenEtki:[-20,5,15,-10],butceEtki:[-10,0,0,-5],sureEtki:[8,4,4,6]},
+{baslik:"Telefon görüşmesi",durum:"CEO sert konuşuyor: 'Son 6 aydır söylediklerinizin hiçbirini yapmadınız.' Nasıl yanıt verirsiniz?",secenekler:["Sessiz kalır, bitirmesini beklerim.","Özür diler, her şeyi düzelteceğimizi söylerim.","'Bu doğru değil, elimizden geleni yaptık.'","'Haklısınız, sizi dinliyorum. Ne bekliyordunuz?'"],dogru:3,puanlar:[5,10,0,30],yorumlar:["~ Tamamen pasif kalmak yetersiz.","~ Özür iyi ama ne yapacağınız belirsiz.","✗ Savunma tepkisi güveni yok eder.","✓ Doğru! Empati ve merak öfkeyi diyaloga dönüştürür."],guvenEtki:[0,5,-15,20],butceEtki:[0,0,-10,0],sureEtki:[5,5,6,4]},
+{baslik:"Toplantı talebi",durum:"CEO 'Son görüşmemiz bu olabilir' dedi. Nasıl toplantı talep edersiniz?",secenekler:["'Yarın 2 saatlik toplantı için uygun musunuz? Çözüm önerilerimizi sunacağız.'","'Bu hafta müsait bir gün var mı?' diye sorarım.","'Avukatlarımız da olsun' öneririm.","'Lütfen kararı vermeyin, acil toplantı istiyorum' derim."],dogru:0,puanlar:[30,10,0,5],yorumlar:["✓ Doğru! Net zaman teklifi ve gündem vaat etmek profesyonellik gösterir.","~ Çok muğlak. CEO somut bir şey görmek istiyor.","✗ Hukuki ton ilişkiyi savaş havasına sokar.","~ Panik hissi verir. Kararlı ve somut olmak daha güçlü görünür."],guvenEtki:[20,10,-25,5],butceEtki:[0,0,-15,0],sureEtki:[4,5,4,4]},
+{baslik:"Toplantıda gerginlik",durum:"CEO çok sert: 'Hiç sözünüzü tutmadınız!' Nasıl yanıt verirsiniz?",secenekler:["Şimdilik sessiz kalayım, fırtına geçer.","'Haklısınız, sizi dinliyorum. Birlikte çözelim.'","'Bugün verimli olmaz, toplantıyı erteleyelim.'","'Biz de elimizden geleni yaptık, bunu kabul etmiyorum!'"],dogru:1,puanlar:[5,30,5,0],yorumlar:["~ Sessiz kalmak pasif görünür. Müşteri yanıt bekliyor.","✓ Doğru! Empati ve kabul diyalog kapısını açar.","~ Ertelemek sorunu çözmez. Şu an fırsatı kaçırmayın.","✗ Savunmaya geçmek gerginliği tırmandırır."],guvenEtki:[0,25,5,-20],butceEtki:[0,0,0,-10],sureEtki:[4,4,5,5]},
+{baslik:"Toplantı sonu",durum:"CEO 'Düşüneceğiz' dedi, toplantı bitti. Sıradaki adımınız ne?",secenekler:["Hemen tekrar ararım, net bir cevap alayım.","Başka müşteriye odaklanırım.","Teşekkür maili atar ve eylem planını yazılı gönderirim.","Beklerim, karar versinler."],dogru:2,puanlar:[0,0,30,5],yorumlar:["✗ Baskı yapmak ters teper ve müşteriyi soğutur.","✗ Müşteriyi erken bırakmak ilişkiyi tamamen bitirir.","✓ Doğru! Yazılı teşekkür ve eylem planı profesyonellik gösterir.","~ Pasif beklemek fırsatı kaçırtır."],guvenEtki:[-15,-30,20,0],butceEtki:[-5,-20,0,0],sureEtki:[2,3,1,2]}
 ],
 satis:[
-{baslik:"İlk temas",durum:"Soğuk arama yaptınız. Müşteri 'İlgilenmiyorum' dedi ve kapatmak üzere. Ne yaparsınız?",secenekler:["Tamam, anladım. İyi günler diyip kapatırım.","Bekleyin! Size özel fırsat var, sadece 2 dakika!","Anlıyorum. Peki şu an en büyük zorluğunuz ne, öğrenebilir miyim?","Fiyatı çok uygun, bir kez daha düşünün derim."],dogru:2,puanlar:[5,0,30,10],yorumlar:["~ Çok erken bırakmak. Bir soru sorma fırsatınız olabilir.","✗ Baskı yapmak güveni anında yok eder.","✓ Doğru! Merak uyandırmak ve ihtiyacı anlamak en güçlü satış hamlesidir.","~ Fiyat konuşmak için henüz çok erken."]},
-{baslik:"İtiraz geliyor",durum:"Müşteri 'Rakibiniz daha ucuz' diyor. Nasıl yanıt verirsiniz?",secenekler:["Biz de aynı fiyata inebiliriz, hemen karar verin!","Fiyat farkı neden önemli sizin için, biraz açar mısınız?","Rakibimiz kalitesiz, bizimki çok daha iyi!","Anlıyorum. Fiyat dışında başka endişeniz var mı?"],dogru:3,puanlar:[0,15,0,30],yorumlar:["✗ Hemen fiyat kırmak ürününüzün değerini düşürür.","~ İyi soru ama tek başına yetmez. Diğer endişeleri de keşfedin.","✗ Rakibi küçümsemek profesyonelce değil.","✓ Doğru! Tüm endişeleri anlamadan fiyat konuşmak anlamsız."]},
-{baslik:"Demo toplantısı",durum:"Ürün demosunda müşteri ilgisiz görünüyor, telefona bakıyor. Ne yaparsınız?",secenekler:["Sunumu hızlandırırım, bir an önce bitireyim.","Durur ve 'Sizi en çok ne ilgilendiriyor?' diye sorarım.","Daha etkileyici özellikler gösteririm, dikkatini çekerim.","Toplantıyı yarıda keser, başka zaman konuşmayı öneririm."],dogru:1,puanlar:[5,30,10,15],yorumlar:["~ Hızlanmak durumu kurtarmaz.","✓ Doğru! Durumu fark edip müşteriyi konuşturmak en iyi hamle.","~ Özellik göstermek sorunu çözmez.","~ Erken bitirmek fırsatı tamamen kaybettirir."]},
-{baslik:"Bütçe yok",durum:"Müşteri 'Bütçemiz yok ama ürününüzü istiyoruz' diyor. Ne yaparsınız?",secenekler:["O zaman maalesef bir şey yapamayız, bütçe olunca arayın.","Tamam, özel indirim yaparım, yarı fiyata verelim.","Bütçeniz ne zaman açılır? Şimdiden planlayalım.","Önce hangi özelliklere ihtiyaçları olduğunu anlar, bütçeye uygun paket öneririm."],dogru:3,puanlar:[0,5,15,30],yorumlar:["✗ Kapıyı tamamen kapatmak. İlişkiyi koruyun.","~ Hemen indirim yapmak değerinizi düşürür.","~ İyi ama çok pasif. Şimdi çözüm üretin.","✓ Doğru! İhtiyacı netleştirip bütçeye uygun paket önermek hem değer gösterir hem satışı ilerletir."]},
-{baslik:"Kapanış anı",durum:"Müşteri 'İyi görünüyor ama biraz daha düşünelim' diyor. Ne yaparsınız?",secenekler:["Tabii, ne zaman karar verirseniz bekliyorum.","Anlıyorum. Kararı zorlaştıran ne var, konuşabilir miyiz?","Bugün imzalarsanız ekstra indirim yapabilirim.","Yarın tekrar arayıp hatırlatırım."],dogru:1,puanlar:[5,30,10,0],yorumlar:["~ Çok pasif. 'Biraz düşünelim' genelde gizli bir itirazın işaretidir.","✓ Doğru! Gizli itirazı keşfetmek kapanışın önündeki engeli kaldırır.","~ İndirim tuzağı.","✗ Hatırlatma araması itirazı çözmez."]}
+{baslik:"İlk temas",durum:"CEO sizi değil yöneticinizi görmek istiyor. Ne yaparsınız?",secenekler:["Yöneticiyi habersiz direkt ararım.","Yöneticime devrederim, o daha iyi halleder.","'Yöneticim müsait değil, ben aradım' diyerek bağlantı kurarım.","'Önce benimle konuşsun' derim."],dogru:2,puanlar:[0,5,30,10],yorumlar:["✗ Üst yönetimi atlamak iç güveni zedeler.","~ Sorumluluğu bırakmak ilişkiyi zayıflatır.","✓ Doğru! İnisiyatif alarak ilişkiyi sahipleniyorsunuz.","~ Savunmacı giriş ilişkiyi baştan zorlaştırır."],guvenEtki:[-15,5,20,5],butceEtki:[-10,0,0,0],sureEtki:[5,4,4,4]},
+{baslik:"İtiraz geliyor",durum:"CEO 'Rakibiniz %20 ucuza yapıyor' diyor. Nasıl yanıt verirsiniz?",secenekler:["'Fiyat dışında başka endişeniz var mı?' derim.","'Rakibimiz kalitesiz, bizimki çok daha iyi!'","'Biz de aynı fiyata inebiliriz, karar verin!'","'Fiyat farkı neden bu kadar önemli sizin için?'"],dogru:0,puanlar:[30,5,0,15],yorumlar:["✓ Doğru! Tüm endişeleri anlamadan fiyat konuşmak anlamsız.","~ Rakibi küçümsemek güven kırar.","✗ Hemen fiyat kırmak değerinizi düşürür.","~ İyi soru ama tek başına yetmez."],guvenEtki:[20,0,-10,10],butceEtki:[0,-5,-20,0],sureEtki:[4,5,4,4]},
+{baslik:"Değer sunumu",durum:"CEO dinlemeye hazır. 3 yıllık ilişkinin değerini nasıl anlatırsınız?",secenekler:["Gelecekte yapacaklarımızı anlatırım.","Sadakati ve geçmiş işbirliğini vurgularım.","Tüm projeleri anlatan uzun bir sunum yaparım.","CEO'nun işine kattığımız somut rakamları ve ROI'yi öne çıkarırım."],dogru:3,puanlar:[10,10,5,30],yorumlar:["~ Gelecek vaatleri şu anki güvensizliği çözmez.","~ Duygusal argüman tek başına yetmez.","~ Uzun sunum CEO'nun zamanını alır.","✓ Doğru! Sayılar ve ROI CEO'yu ikna eder. Somut değer gösterin."],guvenEtki:[10,10,5,20],butceEtki:[-5,0,0,0],sureEtki:[4,4,3,3]},
+{baslik:"Pazarlık",durum:"CEO %15 indirim istedi, bütçeniz %5'e izin veriyor. Ne yaparsınız?",secenekler:["'Yöneticime sorayım' diyerek zaman kazanırım.","'%5 indirim verebilirim, karşılığında 1 yıl uzatma isterim.'","'%15 mümkün değil, bu konuşmayı kapatıyorum.'","'%15 verebiliriz' derim, ilişkiyi kurtarırım."],dogru:1,puanlar:[10,30,0,0],yorumlar:["~ Bu durumda hızlı karar gerekir.","✓ Doğru! Karşılıklı değer yaratmak hem ilişkiyi hem bütçeyi korur.","✗ Sert ret ilişkiyi anında bitirir.","✗ Bütçe dışı taahhüt hem sizi hem şirketi zarara uğratır."],guvenEtki:[5,20,-25,-5],butceEtki:[-5,5,-20,-15],sureEtki:[4,2,2,2]},
+{baslik:"Kapanış anı",durum:"CEO 'Düşüneceğiz' dedi. Toplantı bitti. Ne yaparsınız?",secenekler:["Yarın tekrar arayıp hatırlatırım.","Diğer müşterilerime odaklanırım.","Beklerim, aramasını isterim.","Özet mail atar, 48 saat içinde geri dönüş isterim."],dogru:3,puanlar:[0,0,5,30],yorumlar:["✗ Hatırlatma araması itirazı çözmez.","✗ İlişkiyi vazgeçerek bitirmek stratejik hata.","~ Çok pasif. Topu elinizde tutun.","✓ Doğru! Özet mail taahhüdü belgeler ve süreci kontrol altında tutar."],guvenEtki:[-20,-30,0,15],butceEtki:[-5,-20,0,0],sureEtki:[2,3,2,1]}
 ],
 liderlik:[
-{baslik:"Ekipte çatışma",durum:"İki ekip üyeniz sürekli çatışıyor ve verimlilik düşüyor. Ne yaparsınız?",secenekler:["İkisini de ayrı ayrı dinler, sonra bir araya getiririm.","Birinin pozisyonunu değiştiririm, uzaklaştırırım.","Toplantıda herkesin önünde konuşmalarını isterim.","Görmezden gelirim, zaten çözülür."],dogru:0,puanlar:[30,10,5,0],yorumlar:["✓ Doğru! Önce bireysel dinlemek güven oluşturur. Ortak zemin bulmak çok daha kolay olur.","~ Uzaklaştırmak sorunu çözmez, sadece erteler.","~ Aleni tartışma insanları savunmaya iter.","✗ Çözülmeyen çatışmalar büyür ve tüm ekibi etkiler."]},
-{baslik:"Düşük performans",durum:"Ekibinizdeki bir kişi son iki aydır hedeflerin çok altında kalıyor. Ne yaparsınız?",secenekler:["Sabırla beklerim, kendiliğinden toparlar.","Direk 'Performansın çok kötü' derim, net olmak gerekir.","Neler yaşadığını anlamak için bire bir görüşme yaparım.","Ekibin önünde konuyu açarım, belki utanır düzelir."],dogru:2,puanlar:[0,5,30,0],yorumlar:["✗ Beklemeye devam etmek hem kişiye hem ekibe zarar verir.","~ Netlik önemli ama bu sertlik savunmacılığa yol açar.","✓ Doğru! Önce sebebi anlamak şart. Kişisel sorun mu, iş yükü mü, motivasyon mu?","✗ Alenen utandırmak güveni tamamen yok eder."]},
-{baslik:"Değişime direnç",durum:"Yeni bir süreç getirdiniz ama ekip direnç gösteriyor: 'Eskisi daha iyiydi.' Ne yaparsınız?",secenekler:["'Bu karar verildi, uygulanacak' derim.","Neden direniyor olduklarını anlarım, endişelerini dinlerim.","Yeni süreci geri alırım, ekip mutluluğu önemli.","Direnen kişileri öne çıkararak örnek oluştururum."],dogru:1,puanlar:[5,30,10,0],yorumlar:["~ Otorite kullanmak uyumu sağlar ama içten benimsemeyi değil.","✓ Doğru! Direnç genelde bilgi eksikliği veya kaygıdan kaynaklanır. Dinlemek değişimi hızlandırır.","~ Geri almak liderlik otoritesini zayıflatır.","✗ Bu yaklaşım güvensizlik ve sinizm yaratır."]},
-{baslik:"Karar baskısı",durum:"Üst yönetim acele karar istiyor ama ekibiniz yeterli bilgi olmadan almanın riskli olduğunu söylüyor. Ne yaparsınız?",secenekler:["Üst yönetimin dediğini yaparım, onlar karar verir.","Ekibi dinlemeden kararı veririm, sonra açıklarım.","Üst yönetime riskleri somut verilerle anlatır, ek süre talep ederim.","Ekibe 'siz karar verin' derim, sorumluluk almaktan kaçınırım."],dogru:2,puanlar:[5,0,30,0],yorumlar:["~ Körü körüne uymak liderlik değil. Riskleri yukarı taşımak da göreviniz.","✗ Ekibi yok saymak güveni zedeler.","✓ Doğru! İyi lider hem üstüne hem ekibine köprü olur. Veriyle konuşmak ikna gücünü artırır.","✗ Sorumluluktan kaçmak güvenilirliği yok eder."]},
-{baslik:"Başarıyı paylaşmak",durum:"Ekibiniz büyük bir projeyi başarıyla tamamladı. Üst yönetim sizi tebrik etti. Ne yaparsınız?",secenekler:["Teşekkür ederim, ekibim çok çalıştı deyip geçerim.","Bu başarı tamamen benim liderliğimin sonucu.","Ekibin her üyesinin katkısını ayrıca üst yönetime ileterim.","Başarıyı kutlarım ama kimseyi öne çıkarmam, eşitlik önemli."],dogru:2,puanlar:[10,0,30,5],yorumlar:["~ İyi ama fırsatı kaçırmak. Ekibin görünürlüğünü artırın.","✗ Ekibin başarısını sahiplenmek güveni yok eder.","✓ Doğru! Başarıyı ekiple paylaşmak en güçlü motivasyon aracıdır.","~ Kimseyi öne çıkarmamak fırsatı kaçırmaktır."]}
+{baslik:"Ekibi topla",durum:"Haberi aldınız. Ekibinizi acil toplantıya çağıracaksınız. Ne söylersiniz?",secenekler:["Herkese e-posta atarım, toplantı olmadan bilgilendiririm.","'Kritik bir toplantımız var. 1 saat sonra brifing yapıyoruz.'","Sadece üst düzey kişileri çağırırım.","'Acil durum var, hemen toplanın' diyerek paniği yansıtırım."],dogru:1,puanlar:[5,30,10,5],yorumlar:["~ E-posta aciliyeti yansıtmaz.","✓ Doğru! Sakin ve net çağrı güven verir, ekibi motive eder.","~ Bilgi siloları koordinasyonu zorlaştırır.","~ Panik havası ekibin verimliliğini düşürür."],guvenEtki:[5,15,5,5],butceEtki:[0,0,0,0],sureEtki:[3,2,3,3]},
+{baslik:"Brifing",durum:"Ekip toplandı. Herkes farklı bir şey söylüyor. Ne yaparsınız?",secenekler:["'Şu an aksiyon zamanı. Önceliklerimiz bunlar' diyerek 3 madde belirlerim.","Toplantıyı uzatır, tüm senaryoları konuşuruz.","Herkesi dinler, tüm fikirleri not alırım.","En kıdemli kişiye döner, 'sen ne yapardın?' diye sorarım."],dogru:0,puanlar:[30,0,10,10],yorumlar:["✓ Doğru! Net önceliklendirme ve aksiyon yönlendirmesi kriz liderliğinin özüdür.","✗ Uzun toplantı krizi büyütür.","~ İyi ama kriz anında karar gecikirse kriz büyür.","~ Tecrübe değerli ama ortak sahiplenme daha önemli."],guvenEtki:[15,-15,5,5],butceEtki:[0,-10,0,0],sureEtki:[2,6,3,4]},
+{baslik:"Sorumluluk dağılımı",durum:"3 kişiye görev verdiniz. Biri 'Bu benim işim değil' dedi. Ne yaparsınız?",secenekler:["Görevi kendiniz üstlenir, devam edersiniz.","Görevi başkasına veririm, tartışmaya zaman yok.","'Neden böyle düşündüğünü anlamak istiyorum' diyerek dinlerim.","'Şu an kriz var, bu görevi üstlenmeni istiyorum' derim."],dogru:3,puanlar:[5,5,15,30],yorumlar:["~ Her şeyi kendiniz yapmak sürdürülemez.","~ Sorun ertelenir, tekrar çıkar.","~ Empati iyi ama kriz anında uzun dinleme lüksü yok.","✓ Doğru! Krizi öne alıp tartışmayı erteleyen net liderlik gerekir."],guvenEtki:[5,5,10,15],butceEtki:[-5,0,0,0],sureEtki:[3,2,3,2]},
+{baslik:"Üst yönetim baskısı",durum:"Yöneticiniz 'Bu sözleşme giderse sen gidersin' dedi. Ekibiniz bunu duydu. Ne yaparsınız?",secenekler:["Motivasyon konuşması yaparım, 'hepimiz kazanacağız' derim.","Yöneticiye döner, 'Bu ekibi etkiliyor, çekin bu sözü' derim.","Sakin kalır, 'Odaklanmaya devam edin, sonucu birlikte çıkaracağız' derim.","Ekipten özür diler, 'o öyle demek istemedi' derim."],dogru:2,puanlar:[10,15,30,5],yorumlar:["~ Boş iyimserlik güven vermez.","~ Yöneticiyi eleştirmek ekip önünde otoriteyi zayıflatır.","✓ Doğru! Baskıyı absorbe edip ekibi odakta tutmak liderliğin özüdür.","~ Yöneticiyi korumak ekibin güvenini zedeler."],guvenEtki:[10,10,20,5],butceEtki:[0,0,0,0],sureEtki:[4,4,3,3]},
+{baslik:"Karar sonrası",durum:"Toplantı iyi geçti. CEO 'Kalma kararı verdik' dedi. Ekibinize nasıl dönersiniz?",secenekler:["Yöneticime bildiririm, ekiple ayrıca konuşmam.","Her kişinin katkısını tek tek belirtir, başarıyı paylaşırım.","'Bu sefer oldu, bir daha böyle olmasın' diyerek dersleri çıkarırım.","'Kurtardık' diyerek rahat bir nefes alırız."],dogru:1,puanlar:[0,30,20,10],yorumlar:["✗ Ekibi görmezden gelmek güveni uzun vadede zedeler.","✓ Doğru! Bireysel katkıları görünür kılmak en güçlü motivasyon aracıdır.","~ Ders çıkarmak önemli ama önce kutlamak gerekir.","~ Paylaşılan başarı motivasyonu daha da artırır."],guvenEtki:[-10,20,15,10],butceEtki:[-5,0,0,0],sureEtki:[2,1,2,1]}
 ],
-iletisim:[
-{baslik:"Zor geri bildirim",durum:"Bir çalışanınızın sunumu yetersizdi ama çok emek verdi. Ne söylersiniz?",secenekler:["Çok güzeldi, harika iş çıkardın!","Berbattı, bir daha böyle sunum yapma.","Emeğini görüyorum. Birkaç konuyu güçlendirirsek çok daha etkili olur.","Şimdilik bir şey söylemem, belki kendisi fark eder."],dogru:2,puanlar:[0,0,30,5],yorumlar:["✗ Yalan iltifat kişinin gelişimini engeller.","✗ Bu kadar sert geri bildirim kişiyi kapatır.","✓ Doğru! Çabayı takdir edip gelişim alanlarını yapıcı göstermek en etkili geri bildirimdir.","~ Susmanın da maliyeti var: kişi neyin yanlış gittiğini bilemez."]},
-{baslik:"Yanlış anlaşılma",durum:"E-postanızı yanlış anlayan meslektaşınız sinirli şekilde sizi aradı. Ne yaparsınız?",secenekler:["'Yanlış anladın, ben öyle demedim' diyorum.","Önce onu dinler, sonra ne demek istediğimi sakin açıklarım.","Özür diler, bir daha yazmam diyorum.","E-posta yetersizdi, bir daha e-posta atmam diyorum."],dogru:1,puanlar:[0,30,10,5],yorumlar:["✗ Savunmaya geçmek tartışmayı büyütür.","✓ Doğru! Önce dinlemek gerilimi düşürür. Duyulduğunu hisseden kişi açıklamayı çok daha iyi alır.","~ Özür iyi niyetli ama ne için dediğiniz belirsiz.","~ Bu çözüm değil, kaçınma."]},
-{baslik:"Toplantıda söz almak",durum:"Toplantıda herkes konuşurken önemli bir noktayı fark ettiniz ama söz alamıyorsunuz. Ne yaparsınız?",secenekler:["Sessiz kalırım, zaten biri söyler.","'Özür dilerim, bir dakika' diyerek söz alırım.","Toplantı bittikten sonra e-posta atarım.","Konuşanın sözünü keserek söylerim."],dogru:1,puanlar:[0,30,15,5],yorumlar:["✗ Kritik fikri paylaşmamak hem size hem ekibe zarar verir.","✓ Doğru! Kibarca ama kararlı söz almak asertif iletişimin temelidir.","~ E-posta faydalı ama an geçince etkisi azalır.","~ Sözü kesmek nezaket sınırını aşar."]},
-{baslik:"Olumsuz haber vermek",durum:"Projenin bütçesi kesildi. Ekibinize nasıl iletirsiniz?",secenekler:["'Bütçe kesildi, durum bu' deyip toplantıyı bitiririm.","Haberi mümkün olduğunca geciktiririm, belki değişir.","Haberi net verip neden olduğunu açıklar, soru almak için zaman tanırım.","Haberi e-postayla iletirim, yüz yüze zor olur."],dogru:2,puanlar:[5,0,30,10],yorumlar:["~ Net olmak iyi ama bağlam olmadan panik yaratır.","✗ Geciktirmek güveni zedeler.","✓ Doğru! Şeffaflık ve açıklama güveni korur. Soru almak ekibin süreci sindirmesine yardımcı olur.","~ Yazılı iletişim zor haberlerde yetersiz kalır."]},
-{baslik:"Aktif dinleme",durum:"Bir ekip arkadaşınız iş yükünden bunaldığını söylüyor. Siz de çok meşgulsünüz. Ne yaparsınız?",secenekler:["'Ben de meşgulüm, herkes böyle' diyorum.","Telefona bakarak 'Anlıyorum' diyorum.","'Şu an 10 dakikam var, anlat bakalım' diyerek gerçekten dinlerim.","'HR ile konuş' diyip yönlendiririm."],dogru:2,puanlar:[0,0,30,10],yorumlar:["✗ Kendi yükünüzü öne sürmek kişiyi yalnız hissettirir.","✗ Sahte dinleme hemen fark edilir.","✓ Doğru! Kısıtlı zamanı dürüstçe söyleyip o zamanı gerçekten vermek en etkili empatidir.","~ HR yönlendirmesi bazen gerekli ama önce sizi duymak ister."]}
+kriz:[
+{baslik:"İlk haber",durum:"Haberi hukuk departmanınızdan öğrendiniz. Hukuk 'biz cevap verelim' diyor. Ne yaparsınız?",secenekler:["İki saatte tüm ekibi toplantıya çağırırım.","Durumu üst yönetime iletir karar vermelerini beklerim.","Hukuka bırakırım, onlar bilir.","'Hukuk süreci sonra, önce ben arayacağım' diyerek müşteriye ulaşırım."],dogru:3,puanlar:[15,10,0,30],yorumlar:["~ İyi ama müşteriyle temas olmadan toplantı verimsiz olur.","~ Bürokratik gecikme krizi büyütür.","✗ Hukuki yanıt ilişkiyi tamamen savaşa dönüştürür.","✓ Doğru! İnsan teması önce gelmeli. İlişki hukukun önünde."],guvenEtki:[10,5,-20,20],butceEtki:[0,-5,-15,0],sureEtki:[5,6,4,4]},
+{baslik:"İlk 2 saat",durum:"Müşteriye ulaştınız. '48 saat sonra kararımızı vereceğiz' dedi. Bu 2 saatte ne yaparsınız?",secenekler:["Müşteriye alternatif bir sözleşme teklifi gönderirim.","Müşterinin son 6 aylık şikayetlerini ve yazışmalarını incelerim.","Tüm ekibi bilgilendiririm, panik havasında toparlanırım.","Rakip firmaların tekliflerini araştırırım."],dogru:1,puanlar:[0,30,5,10],yorumlar:["~ Gerekçeyi bilmeden sözleşme teklifi saçma görünür.","✓ Doğru! Sorunu anlamadan çözüm üretemezsiniz. Geçmiş veriler çok değerli.","~ Panik yönetim enerjisini yanlış yere harcar.","~ Rakipleri bilmek faydalı ama asıl öncelik değil."],guvenEtki:[-10,15,5,5],butceEtki:[-10,0,0,-5],sureEtki:[2,2,2,3]},
+{baslik:"Kriz toplantısı",durum:"Ekibinizle toplandınız. Herkes farklı fikir savunuyor, zaman daralıyor. Ne yaparsınız?",secenekler:["Toplantıyı keser, yarın devam ederim.","En kıdemli kişinin önerisini alır uygularım.","'Şu an karar vermem gerekiyor' diyerek en kritik 3 adımı belirler ve dağıtırım.","Herkesi dinler, konsensüs beklerim."],dogru:2,puanlar:[0,10,30,5],yorumlar:["✗ Ertelemek krizi büyütür, zaman kaybıdır.","~ Kıdem her zaman en iyi cevap değildir.","✓ Doğru! Kriz liderliği net karar ve hızlı dağıtım gerektirir.","~ Konsensüs güzel ama kriz anında zaman lüksü yok."],guvenEtki:[-20,5,15,5],butceEtki:[-15,0,0,0],sureEtki:[8,4,3,4]},
+{baslik:"Müşteri toplantısı",durum:"CEO toplantıda çok sert: 'Artık güveniniz kalmadı.' Ne yaparsınız?",secenekler:["İndirim teklifini masaya koyarım.","Önceki başarılarımızı anlatırım, hatırlatırım.","'Bu kadar sert olmak gerekmiyor' derim.","'Haklısınız, güven kırıldı. Bugün somut bir plan sunacağız' derim."],dogru:3,puanlar:[5,10,0,30],yorumlar:["~ Para meselesi değil, güven meselesi. Önce ilişkiyi onarın.","~ Geçmiş başarılar şu anki sorunu çözmez.","✗ Savunma tepkisi durumu daha da gerginleştirir.","✓ Doğru! Sorumluluğu kabul edip somut plan vaat etmek güveni yeniden inşa eder."],guvenEtki:[5,5,-20,25],butceEtki:[-10,0,-10,0],sureEtki:[4,5,5,4]},
+{baslik:"Karar anı",durum:"CEO 'Sizi dinledim. Düşüneceğiz' dedi, toplantı bitti. Sonraki 1 saatte ne yaparsınız?",secenekler:["Teşekkür maili atar, eylem planını yazılı gönderirim.","Hemen tekrar arar, kararı sorarım.","Rakip firmalarla görüşmeye başlarım, alternatif hazırlarım.","Beklerim, karar versinler."],dogru:0,puanlar:[30,0,5,5],yorumlar:["✓ Doğru! Yazılı teyit profesyonellik gösterir ve taahhüdü somutlaştırır.","✗ Baskı yapmak ters teper.","~ Alternatif iyi ama ilişkiyi önce kurtarmaya çalışın.","~ Pasif beklemek fırsatı kaçırtır."],guvenEtki:[20,-15,5,0],butceEtki:[0,-5,0,0],sureEtki:[1,2,3,2]}
+],
+dayaniklilik:[
+{baslik:"Toplantıda donup kalmak",durum:"Kuzey Holding toplantısında yöneticiniz CEO'nun önünde sizi hiç beklemediğiniz bir konuda sorumlu tuttu. İçinizden hangisi geçiyor?",secenekler:["'Yanımdaki kurtarır, ona bakayım.'","'Bu haksızlık, yönetici CEO önünde neden bunu yaptı?'","'Hazır değilim ama bunu dürüstçe söyleyebilirim, sorun değil.'","'Bitti, CEO yetersiz olduğumu gördü.'"],dogru:2,puanlar:[5,10,30,0],yorumlar:["~ Sorumluluktan kaçış CEO'nun gözünden kaçmaz.","~ Bu düşünce şu an çözüm üretmez.","✓ Doğru! 'Bilmiyorum ama öğrenebilirim' hem sakinleştirir hem çözüme yönlendirir.","✗ Felaket senaryosu paniği artırır."],guvenEtki:[0,5,20,-15],butceEtki:[0,0,0,0],sureEtki:[3,4,3,3]},
+{baslik:"Kriz sürecinde haksız eleştiri",durum:"48 saatlik kriz sürecinde yöneticiniz 'Bu hatayı sen yaptın' dedi. Oysa o kararı bizzat yönetici vermişti. İlk düşünceniz?",secenekler:["'Zaten hep böyle, bu krizden de bir şey çıkmaz.'","'Belki haklıdır, kendimi sorgulayayım.'","'CEO da duydu, çok utandım.'","'Haksız ama kriz var. Sonra bire bir konuşurum.'"],dogru:3,puanlar:[0,15,5,30],yorumlar:["✗ Çaresizlik motivasyonu tamamen öldürür.","~ Öğrenmeye açık olmak güzel ama haksız eleştiriyi de görmek gerekir.","~ Utanç normal ama buna odaklanmak sizi krizden koparır.","✓ Doğru! Haksızlığı not edip krize odaklanmak hem profesyonellik hem dayanıklılıktır."],guvenEtki:[-15,10,-5,20],butceEtki:[0,0,0,0],sureEtki:[4,4,3,3]},
+{baslik:"Ekipte gerilim",durum:"Krizin ortasında bir iş arkadaşınız CEO'nun önünde sürekli sizi kesiyor. Aklınızdan ne geçiyor?",secenekler:["'CEO ne düşünüyor şimdi?'","'Beni etkiliyor ama kriz bitmeden bu tartışmayı açamam.'","'Zaten ben çok konuşuyorum, haklı da olabilir.'","'Bu kişi beni kasıtlı sabote ediyor.'"],dogru:1,puanlar:[0,30,10,5],yorumlar:["~ CEO'nun gözüne odaklanmak asıl sorunu çözmenizi engeller.","✓ Doğru! Krizi öncelikli tutup iç çatışmayı sonraya bırakmak en olgun iç sestir.","~ Kendinizi küçümsemek kriz performansınızı engeller.","~ 'Sabotaj' düşüncesi kriz anında odağınızı dağıtır."],guvenEtki:[-10,20,5,0],butceEtki:[0,0,0,0],sureEtki:[4,3,3,3]},
+{baslik:"Kriz sonrası değerlendirme",durum:"Kuzey Holding krizini atlattınız. Yöneticiniz 'Yeterince proaktif değildiniz' dedi. Aklınızdan ne geçiyor?",secenekler:["'Üzüldüm ama bu bir geri bildirim. Ne öğrendim?'","'Kimseye söylemeyeyim, mahcup olurum.'","'Haklıdır, bir dahaki krizi de beceremem.'","'Bu haksız, proaktif olan bendim.'"],dogru:0,puanlar:[30,5,0,15],yorumlar:["✓ Doğru! Duyguyu kabul edip öğrenmeye açık kalmak dayanıklılığın özüdür.","~ İçe kapanmak büyümeyi engeller.","✗ Bu düşünce gelecekteki kriz performansınızı da düşürür.","~ Haklı olabilirsiniz ama önce anlamaya çalışmak daha sağlıklı."],guvenEtki:[20,-5,-20,10],butceEtki:[0,0,0,0],sureEtki:[2,3,2,3]},
+{baslik:"Kriz ortasında ek yük",durum:"48 saatlik krizin tam ortasında yöneticiniz 'Bir de şu raporu bugün bitirebilir misin?' diye sordu. İçinizden ne geçiyor?",secenekler:["'Tamam derim, sonra bakarım ne olur.'","'Kapasitem doldu. Bunu yapıcı şekilde ifade edebilirim.'","'Neden hep ben? Kriz yetmez miydi?'","'Hayır diyemem, ne düşünür bilmiyorum.'"],dogru:1,puanlar:[0,30,10,5],yorumlar:["~ Belirsizlik hem sizi hem kriz yönetimini riske atar.","✓ Doğru! Sınırınızı fark edip yapıcı ifade etmeye hazırlanmak en sağlıklı iç sestir.","~ Adaletsizlik hissi anlaşılır ama çözüm üretmez.","~ 'Ne düşünür' korkusu kriz ortasında sizi daha da bunaltır."],guvenEtki:[-10,20,5,-5],butceEtki:[0,0,0,0],sureEtki:[3,2,3,2]}
 ]};
-let KARARLAR=TUM_SENARYOLAR.kriz;
-let seciliSenaryo='kriz';
-let bilgi={odaKodu:null,oyuncuId:null,ad:null,rol:null};
-let mevcutKarar=0,toplamPuan=0,dogruSayi=0,sureInterval=null;
+
+let oyunDurumu={guven:45,butce:100,sure:48,puan:0,ad:'',mevcutSenaryo:'iletisim',tamamlananlar:[],asamaNo:1,kazanilanRozetler:[]};
+let KARARLAR=[],mevcutKarar=0,toplamPuan=0,dogruSayi=0,sureInterval=null;
+const SURE_LIMIT=30,CEVRE=2*Math.PI*18;
+
 window.goster=id=>{document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');};
-window.senaryoSec=(el,id)=>{document.querySelectorAll('.senaryo-kart').forEach(k=>k.classList.remove('secili'));el.classList.add('secili');seciliSenaryo=id;};
-function initials(ad){return ad.split(' ').map(k=>k[0]).join('').substring(0,2).toUpperCase();}
-function rastgeleKod(){return Math.random().toString(36).substring(2,8).toUpperCase();}
+window.secYetkinlik=(el,id)=>{document.querySelectorAll('.karakter-kart').forEach(k=>k.classList.remove('secili'));el.classList.add('secili');oyunDurumu.mevcutSenaryo=id;};
+
+function gostergeGuncelle(){
+  const g=oyunDurumu.guven,b=oyunDurumu.butce,s=oyunDurumu.sure;
+  document.getElementById('gv-deger').textContent=g+'/100';
+  document.getElementById('gv-bar').style.cssText=`width:${g}%;background:${g>60?'#639922':g>30?'#EF9F27':'#E24B4A'}`;
+  document.getElementById('butce-deger').textContent=b+' birim';
+  document.getElementById('butce-bar').style.cssText=`width:${Math.max(0,b)}%;background:${b>50?'#639922':b>25?'#EF9F27':'#E24B4A'}`;
+  document.getElementById('sure-deger').textContent=s+' saat';
+  document.getElementById('sure-karar-bar').style.width=(s/48*100)+'%';
+}
+
+function asamaBilgiGuncelle(){
+  document.getElementById('asama-yazi').textContent='Aşama '+oyunDurumu.asamaNo+'/5';
+  document.getElementById('asama-kategori').textContent=KATEGORI_ISIMLERI[oyunDurumu.mevcutSenaryo]||'';
+  document.getElementById('asama-noktalar').innerHTML=Array(5).fill(0).map((_,i)=>`<div class="asama-nokta ${i<oyunDurumu.asamaNo-1?'tamam':i===oyunDurumu.asamaNo-1?'aktif':''}"></div>`).join('');
+}
+
 function sureyiGuncelle(kalan){
-  const yuzde=kalan/SURE,offset=CEVRE*(1-yuzde);
-  const daire=document.getElementById('sure-daire');if(!daire)return;
+  const y=kalan/SURE_LIMIT,offset=CEVRE*(1-y);
+  const d=document.getElementById('sure-daire-el');if(!d)return;
   document.getElementById('sure-sayi').textContent=kalan;
-  document.getElementById('sure-yuzde').textContent=Math.round(yuzde*100)+'%';
-  daire.style.strokeDashoffset=offset;
-  const bar=document.getElementById('sure-bar-fill');
-  bar.style.width=(yuzde*100)+'%';
-  if(kalan>15){daire.style.stroke='#639922';bar.className='sure-bar-fill yesilden';}
-  else if(kalan>8){daire.style.stroke='#EF9F27';bar.className='sure-bar-fill saridan';}
-  else{daire.style.stroke='#E24B4A';bar.className='sure-bar-fill kildan';}
+  document.getElementById('sure-yuzde').textContent=Math.round(y*100)+'%';
+  d.style.strokeDashoffset=offset;
+  const bar=document.getElementById('sure-bar-fill'),renk=kalan>15?'#639922':kalan>8?'#EF9F27':'#E24B4A';
+  bar.style.width=(y*100)+'%';bar.style.background=renk;d.style.stroke=renk;
 }
-function konfeti(){
-  const wrap=document.getElementById('konfeti-wrap');if(!wrap)return;
-  wrap.innerHTML='';
-  const r=['#185FA5','#639922','#EF9F27','#E24B4A','#7F77DD','#25D366'];
-  for(let i=0;i<22;i++){const p=document.createElement('div');p.className='konfeti-p';p.style.cssText=`left:${Math.random()*100}%;background:${r[Math.floor(Math.random()*r.length)]};animation-delay:${Math.random()*0.8}s;animation-duration:${1+Math.random()*0.8}s;`;wrap.appendChild(p);}
+
+function konfeti(id){
+  const w=document.getElementById(id);if(!w)return;w.innerHTML='';
+  const r=['#185FA5','#639922','#EF9F27','#E24B4A','#7F77DD'];
+  for(let i=0;i<18;i++){const p=document.createElement('div');p.className='konfeti-p';p.style.cssText=`left:${Math.random()*100}%;background:${r[Math.floor(Math.random()*r.length)]};animation-delay:${Math.random()*0.7}s;animation-duration:${1+Math.random()*0.7}s;`;w.appendChild(p);}
 }
+
+function rozetKarti(r){return `<div class="rozet-kart"><div style="font-size:26px;">${r.ikon}</div><div><div style="font-size:12px;font-weight:bold;color:#633806;">${r.isim}</div><div style="font-size:11px;color:#8B5E1A;">${r.ac}</div></div></div>`;}
+function initials(ad){return ad.split(' ').map(k=>k[0]).join('').substring(0,2).toUpperCase();}
+
 const KR=[{sac:'#2C2C2A',giysi:'#185FA5',ten:'#F4A261',harf:'A'},{sac:'#4A1B0C',giysi:'#639922',ten:'#D4906A',harf:'B'},{sac:'#2C2C2A',giysi:'#7F77DD',ten:'#F4C49A',harf:'C'},{sac:'#633806',giysi:'#A32D2D',ten:'#E8A87C',harf:'D'}];
-function kisiSvg(k){return `<svg width="42" height="58" viewBox="0 0 42 58" style="flex-shrink:0;"><ellipse cx="21" cy="8" rx="8" ry="5" fill="${k.sac}"/><circle cx="21" cy="13" r="10" fill="${k.ten}"/><circle cx="17" cy="11" r="1.8" fill="#333"/><circle cx="25" cy="11" r="1.8" fill="#333"/><path d="M15 8 Q17 6.5 19 8" fill="none" stroke="#555" stroke-width="1.3" stroke-linecap="round"/><path d="M23 8 Q25 6.5 27 8" fill="none" stroke="#555" stroke-width="1.3" stroke-linecap="round"/><path d="M17 17 Q21 16 25 17" fill="none" stroke="#888" stroke-width="1.2" stroke-linecap="round"/><rect x="13" y="23" width="16" height="18" rx="4" fill="${k.giysi}"/><rect x="21" y="23" width="3" height="10" fill="white" opacity="0.25"/><rect x="9" y="24" width="5" height="13" rx="3" fill="${k.giysi}"/><rect x="28" y="24" width="5" height="13" rx="3" fill="${k.giysi}"/><rect x="14" y="41" width="6" height="15" rx="3" fill="${k.giysi}"/><rect x="22" y="41" width="6" height="15" rx="3" fill="${k.giysi}"/></svg>`;}
-function anlaticiSvg(){return `<svg width="46" height="62" viewBox="0 0 46 62" style="flex-shrink:0;margin-top:2px;"><ellipse cx="23" cy="8" rx="9" ry="5.5" fill="#633806"/><circle cx="23" cy="14" r="11" fill="#E8C99A"/><circle cx="19" cy="12" r="1.8" fill="#333"/><circle cx="27" cy="12" r="1.8" fill="#333"/><path d="M17 9 Q19 7.5 21 9" fill="none" stroke="#555" stroke-width="1.3" stroke-linecap="round"/><path d="M25 9 Q27 7.5 29 9" fill="none" stroke="#555" stroke-width="1.3" stroke-linecap="round"/><path d="M19 18 Q23 17 27 18" fill="none" stroke="#888" stroke-width="1.2" stroke-linecap="round"/><rect x="14" y="25" width="18" height="20" rx="4" fill="#2C2C2A"/><rect x="22" y="25" width="3" height="11" fill="white" opacity="0.2"/><rect x="9" y="26" width="6" height="15" rx="3" fill="#2C2C2A"/><rect x="31" y="26" width="6" height="15" rx="3" fill="#2C2C2A"/><rect x="16" y="45" width="6" height="16" rx="3" fill="#2C2C2A"/><rect x="24" y="45" width="6" height="16" rx="3" fill="#2C2C2A"/></svg>`;}
+
+function kisiSvg(k){return `<svg width="34" height="48" viewBox="0 0 34 48" style="flex-shrink:0;"><ellipse cx="17" cy="7" rx="6.5" ry="3.8" fill="${k.sac}"/><circle cx="17" cy="12.5" r="8" fill="${k.ten}"/><circle cx="14" cy="10.5" r="1.4" fill="#333"/><circle cx="20" cy="10.5" r="1.4" fill="#333"/><path d="M12.5 7 Q14.3 5.9 16.2 7" fill="none" stroke="#555" stroke-width="1.1" stroke-linecap="round"/><path d="M18 7 Q19.8 5.9 21.5 7" fill="none" stroke="#555" stroke-width="1.1" stroke-linecap="round"/><path d="M13.5 16 Q17 15 20.5 16" fill="none" stroke="#888" stroke-width="1" stroke-linecap="round"/><rect x="9.5" y="20" width="15" height="13" rx="3.2" fill="${k.giysi}"/><rect x="5" y="21" width="5.5" height="10" rx="2.3" fill="${k.giysi}"/><rect x="23.5" y="21" width="5.5" height="10" rx="2.3" fill="${k.giysi}"/><rect x="10.5" y="33" width="4.7" height="12" rx="2.3" fill="${k.giysi}"/><rect x="18.8" y="33" width="4.7" height="12" rx="2.3" fill="${k.giysi}"/></svg>`;}
+
+function anlaticiSvg(){return `<svg width="40" height="52" viewBox="0 0 40 52" style="flex-shrink:0;margin-top:2px;"><ellipse cx="20" cy="8" rx="8.5" ry="4.7" fill="#633806"/><circle cx="20" cy="13.5" r="10" fill="#E8C99A"/><circle cx="16" cy="11.5" r="1.7" fill="#333"/><circle cx="24" cy="11.5" r="1.7" fill="#333"/><path d="M14.5 8.3 Q16.5 7 18.5 8.3" fill="none" stroke="#555" stroke-width="1.2" stroke-linecap="round"/><path d="M21.5 8.3 Q23.5 7 25.5 8.3" fill="none" stroke="#555" stroke-width="1.2" stroke-linecap="round"/><path d="M16 18 Q20 17 24 18" fill="none" stroke="#888" stroke-width="1.1" stroke-linecap="round"/><rect x="11.5" y="24" width="17" height="16" rx="4" fill="#2C2C2A"/><rect x="7" y="25" width="5.5" height="12" rx="2.7" fill="#2C2C2A"/><rect x="27.5" y="25" width="5.5" height="12" rx="2.7" fill="#2C2C2A"/><rect x="13.5" y="40" width="5.5" height="12" rx="2.7" fill="#2C2C2A"/><rect x="21" y="40" width="5.5" height="12" rx="2.7" fill="#2C2C2A"/></svg>`;}
+
 function oyunEkraniGoster(idx){
   goster('oyun');if(idx>=KARARLAR.length)return;
+  asamaBilgiGuncelle();
   const k=KARARLAR[idx];
-  document.getElementById('karar-baslik-mini').textContent='Karar '+(idx+1)+' / '+KARARLAR.length;
-  document.getElementById('ilerleme-bar').innerHTML=KARARLAR.map((_,i)=>`<div class="adim ${i<idx?'tamamlandi':i===idx?'aktif':''}"></div>`).join('');
-  sureyiGuncelle(SURE);
-  const sh=k.secenekler.map((s,i)=>{const kr=KR[i];return `<button class="s-btn" id="sbtn${i}" onclick="window.sec(${idx},${i})">${kisiSvg(kr)}<div style="display:flex;flex-direction:column;gap:2px;"><span style="font-size:10px;font-weight:bold;color:${kr.giysi};">${kr.harf}</span><span style="font-size:13px;color:#222;line-height:1.4;">${s}</span></div></button>`;}).join('');
-  document.getElementById('karar-alani').innerHTML=`<div class="card" style="padding:14px;"><div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:12px;">${anlaticiSvg()}<div style="background:#EEF4FF;border:1.5px solid #B5D4F4;border-radius:4px 12px 12px 12px;padding:10px 12px;flex:1;"><div style="font-size:11px;font-weight:bold;color:#185FA5;margin-bottom:4px;">Karar ${idx+1} / ${KARARLAR.length} — ${k.baslik}</div><div style="font-size:13px;color:#222;line-height:1.5;">${k.durum}</div></div></div><div id="secenekler" style="display:flex;flex-direction:column;gap:7px;">${sh}</div><div id="geri-bildirim"></div></div>`;
-  [0,1,2,3].forEach(i=>setTimeout(()=>{const b=document.getElementById('sbtn'+i);if(b)b.classList.add('gorunsun');},200+i*250));
+  document.getElementById('karar-mini').textContent='Karar '+(idx+1)+'/'+KARARLAR.length;
+  document.getElementById('ilerleme-bar').innerHTML=KARARLAR.map((_,i)=>`<div class="adim ${i<idx?'tamam':i===idx?'aktif':''}"></div>`).join('');
+  sureyiGuncelle(SURE_LIMIT);
+  const sh=k.secenekler.map((s,i)=>{const kr=KR[i];return `<button class="s-btn" id="sbtn${i}" onclick="window.sec(${idx},${i})">${kisiSvg(kr)}<div style="display:flex;flex-direction:column;gap:2px;"><span style="font-size:9px;font-weight:bold;color:${kr.giysi};">${kr.harf}</span><span class="s-metin">${s}</span></div></button>`;}).join('');
+  document.getElementById('karar-alani').innerHTML=`<div class="card" style="padding:12px;"><div style="display:flex;gap:8px;align-items:flex-start;margin-bottom:10px;">${anlaticiSvg()}<div style="background:#EEF4FF;border:1px solid #B5D4F4;border-radius:4px 10px 10px 10px;padding:9px 10px;flex:1;"><div style="font-size:10.5px;font-weight:bold;color:#185FA5;margin-bottom:3px;">Karar ${idx+1}/${KARARLAR.length} — ${k.baslik}</div><div style="font-size:12.5px;color:#222;line-height:1.45;">${k.durum}</div></div></div><div id="secenekler">${sh}</div><div id="geri-bildirim"></div></div>`;
+  [0,1,2,3].forEach(i=>setTimeout(()=>{const b=document.getElementById('sbtn'+i);if(b)b.classList.add('gorunsun');},150+i*200));
+  clearInterval(sureInterval);let kalan=SURE_LIMIT;
+  sureInterval=setInterval(()=>{kalan--;sureyiGuncelle(kalan);if(kalan<=0){clearInterval(sureInterval);document.querySelectorAll('.s-btn').forEach(b=>b.disabled=true);const gb=document.getElementById('geri-bildirim');if(gb)gb.innerHTML=`<div class="yorum-kutu" style="background:#FCEBEB;border:1px solid #F09595;color:#791F1F;margin-top:8px;">⏱ Süre doldu! +0 puan</div><button class="btn ana" style="margin-top:8px;width:100%;" onclick="window.sonrakiKarara(${idx})">Sonraki →</button>`;}},1000);
 }
-window.soloBaslat=()=>{
-  const ad=document.getElementById('ad-input').value.trim();
-  if(!ad){alert('Lütfen adınızı girin.');return;}
-  KARARLAR=TUM_SENARYOLAR[seciliSenaryo];
-  bilgi={odaKodu:'solo_'+Date.now(),ad,rol:'solo',oyuncuId:'solo_'+Date.now()};
-  mevcutKarar=0;toplamPuan=0;dogruSayi=0;
-  oyunEkraniGoster(0);
-  window._soloSonraki=async(idx)=>{clearInterval(sureInterval);const s=idx+1;if(s>=KARARLAR.length)soloSonuc();else{oyunEkraniGoster(s);sureyiYonet_solo(s);}};
-  sureyiYonet_solo(0);
-};
-function sureyiYonet_solo(kIdx){
-  clearInterval(sureInterval);let kalan=SURE;sureyiGuncelle(kalan);
-  sureInterval=setInterval(()=>{kalan--;sureyiGuncelle(kalan);if(kalan<=0){clearInterval(sureInterval);const s=kIdx+1;if(s>=KARARLAR.length)soloSonuc();else{oyunEkraniGoster(s);sureyiYonet_solo(s);}}},1000);
-}
-async function soloSonuc(){
+
+window.sec=(kIdx,sIdx)=>{
   clearInterval(sureInterval);
-  const maxPuan=KARARLAR.reduce((a,k)=>a+Math.max(...k.puanlar),0);
-  const yuzde=Math.round(toplamPuan/maxPuan*100);
-  document.getElementById('benim-puanim').textContent=toplamPuan;
-  document.getElementById('dogru-sayi').textContent=dogruSayi+'/'+KARARLAR.length;
-  document.getElementById('musteri-sonuc').textContent=yuzde>=60?'✓':'✗';
-  const kazandi=yuzde>=60;
-  document.getElementById('sonuc-baslik').textContent=kazandi?'Tebrikler! 🎉':'Tekrar deneyin';
-  document.getElementById('sonuc-yorum').textContent=yuzde>=80?'Mükemmel! Empati ve somut adımlar fark yarattı.':yuzde>=60?'İyi gitti ama bazı fırsatlar kaçırıldı.':'Savunmacı yaklaşım sonucu olumsuz etkiledi.';
-  document.getElementById('siralama-listesi').innerHTML=`<div class="skor-satir birinci"><div class="skor-no">🥇</div><div class="avatar" style="background:#FCD34D;color:#633806;">${initials(bilgi.ad)}</div><div class="skor-ad">${bilgi.ad}</div><div class="skor-puan">${toplamPuan} puan</div><div class="skor-dogru">${dogruSayi}/${KARARLAR.length} doğru</div></div>`;
-  goster('sonuc');if(kazandi)konfeti();
-}
-window.katilEkraniAc=()=>{const ad=document.getElementById('ad-input').value.trim();if(!ad){alert('Lütfen önce adınızı girin.');return;}document.getElementById('katil-ad-goster').textContent='👤 '+ad;document.getElementById('oda-kodu-input').value='';goster('katil-ekran');};
-window.odaOlustur=async()=>{
-  const ad=document.getElementById('ad-input').value.trim();if(!ad){alert('Lütfen adınızı girin.');return;}
-  KARARLAR=TUM_SENARYOLAR[seciliSenaryo];
-  const kod=rastgeleKod();
-  bilgi={odaKodu:kod,ad,rol:'kolay',oyuncuId:'kolay_'+Date.now()};
-  await set(ref(db,`odalar/${kod}`),{durum:'bekliyor',mevcutKarar:0,sure_baslangic:0,senaryo:seciliSenaryo});
-  await set(ref(db,`odalar/${kod}/oyuncular/${bilgi.oyuncuId}`),{ad,puan:0,rol:'kolay'});
-  document.getElementById('goster-oda-kodu').textContent=kod;
-  goster('kolay-bekle');kolayBekleIzle(kod);
-};
-window.odayaKatil=async()=>{
-  const ad=document.getElementById('ad-input').value.trim();
-  const kod=document.getElementById('oda-kodu-input').value.trim().toUpperCase();
-  if(!ad){alert('Lütfen adınızı girin.');return;}
-  if(kod.length!==6){alert('Oda kodu 6 haneli olmalı.');return;}
-  const snap=await get(ref(db,`odalar/${kod}`));if(!snap.exists()){alert('Oda bulunamadı.');return;}
-  const senaryo=snap.val().senaryo||'kriz';
-  KARARLAR=TUM_SENARYOLAR[senaryo];
-  bilgi={odaKodu:kod,ad,rol:'katilimci',oyuncuId:'oyuncu_'+Date.now()};
-  await set(ref(db,`odalar/${kod}/oyuncular/${bilgi.oyuncuId}`),{ad,puan:0,rol:'katilimci'});
-  document.getElementById('katil-bekle-ad').textContent='Hoş geldin, '+ad+'!';
-  goster('katil-bekle');katilimciBekle(kod);
-};
-function kolayBekleIzle(kod){
-  onValue(ref(db,`odalar/${kod}/oyuncular`),snap=>{
-    const liste=Object.values(snap.val()||{});
-    document.getElementById('oyuncu-sayisi').textContent=liste.length;
-    document.getElementById('baslat-btn').disabled=liste.length<1;
-    document.getElementById('kolay-oyuncu-listesi').innerHTML=liste.map(o=>`<div class="oyuncu-satir"><div class="avatar">${initials(o.ad)}</div><div class="oyuncu-adi">${o.ad}</div><div style="font-size:11px;color:#aaa;">${o.rol==='kolay'?'Kolaylaştırıcı':'Katılımcı'}</div></div>`).join('');
-  });
-}
-function katilimciBekle(kod){
-  onValue(ref(db,`odalar/${kod}/oyuncular`),snap=>{document.getElementById('katil-bekle-oyuncular').innerHTML='<p style="font-size:12px;color:#aaa;margin-bottom:6px;">Odadakiler:</p>'+Object.values(snap.val()||{}).map(o=>`<div class="oyuncu-satir"><div class="avatar">${initials(o.ad)}</div><div class="oyuncu-adi">${o.ad}</div></div>`).join('');});
-  onValue(ref(db,`odalar/${kod}/durum`),snap=>{
-    if(snap.val()==='oynuyor'){mevcutKarar=0;toplamPuan=0;dogruSayi=0;get(ref(db,`odalar/${kod}/mevcutKarar`)).then(s=>{mevcutKarar=s.val()||0;oyunEkraniGoster(mevcutKarar);});izleKararDegisimi(kod);sureFirebaseDinle(kod);}
-    if(snap.val()==='bitti')sonuclariGoster(kod);
-  });
-}
-function sureFirebaseDinle(kod){onValue(ref(db,`odalar/${kod}/sure_baslangic`),snap=>{const b=snap.val();if(!b)return;const gecen=Math.floor((Date.now()-b)/1000),kalan=Math.max(0,SURE-gecen);clearInterval(sureInterval);let k=kalan;sureyiGuncelle(k);sureInterval=setInterval(()=>{k--;sureyiGuncelle(k);if(k<=0)clearInterval(sureInterval);},1000);});}
-window.oyunuBaslat=async()=>{
-  const kod=bilgi.odaKodu,simdi=Date.now();
-  await update(ref(db,`odalar/${kod}`),{durum:'oynuyor',mevcutKarar:0,sure_baslangic:simdi});
-  mevcutKarar=0;toplamPuan=0;dogruSayi=0;
-  oyunEkraniGoster(0);izleKararDegisimi(kod);sureyiYonet(kod,0,simdi);
-};
-function sureyiYonet(kod,kIdx,baslangic){
-  clearInterval(sureInterval);let kalan=SURE;sureyiGuncelle(kalan);
-  sureInterval=setInterval(async()=>{kalan--;sureyiGuncelle(kalan);if(kalan<=0){clearInterval(sureInterval);const s=kIdx+1,simdi=Date.now();if(s>=KARARLAR.length)await update(ref(db,`odalar/${kod}`),{durum:'bitti',mevcutKarar:s});else{await update(ref(db,`odalar/${kod}`),{mevcutKarar:s,sure_baslangic:simdi});oyunEkraniGoster(s);sureyiYonet(kod,s,simdi);}}},1000);
-}
-function izleKararDegisimi(kod){
-  onValue(ref(db,`odalar/${kod}/mevcutKarar`),snap=>{const k=snap.val();if(k===null)return;if(bilgi.rol==='katilimci'&&k!==mevcutKarar){mevcutKarar=k;if(k>=KARARLAR.length){sonuclariGoster(kod);return;}oyunEkraniGoster(k);}});
-  if(bilgi.rol==='katilimci'){onValue(ref(db,`odalar/${kod}/sure_baslangic`),snap=>{const b=snap.val();if(!b)return;const gecen=Math.floor((Date.now()-b)/1000),kalan=Math.max(0,SURE-gecen);clearInterval(sureInterval);let k=kalan;sureyiGuncelle(k);sureInterval=setInterval(()=>{k--;sureyiGuncelle(k);if(k<=0)clearInterval(sureInterval);},1000);});}
-}
-window.sec=async(kIdx,sIdx)=>{
   const k=KARARLAR[kIdx];
-  document.querySelectorAll('.s-btn').forEach((b,i)=>{b.disabled=true;b.style.cursor='default';if(i===k.dogru)b.classList.add('dogru');else if(i===sIdx)b.classList.add('yanlis');});
+  document.querySelectorAll('.s-btn').forEach((b,i)=>{b.disabled=true;if(i===k.dogru)b.classList.add('dogru');else if(i===sIdx)b.classList.add('yanlis');});
   const puan=k.puanlar[sIdx];toplamPuan+=puan;if(sIdx===k.dogru)dogruSayi++;
+  oyunDurumu.puan+=puan;
+  oyunDurumu.guven=Math.min(100,Math.max(0,oyunDurumu.guven+k.guvenEtki[sIdx]));
+  oyunDurumu.butce=Math.max(0,oyunDurumu.butce+k.butceEtki[sIdx]);
+  oyunDurumu.sure=Math.max(0,oyunDurumu.sure-k.sureEtki[sIdx]);
   document.getElementById('anlik-puan').textContent=toplamPuan;
-  if(!bilgi.odaKodu.startsWith('solo'))await update(ref(db,`odalar/${bilgi.odaKodu}/oyuncular/${bilgi.oyuncuId}`),{puan:toplamPuan});
+  gostergeGuncelle();
   const ym=k.yorumlar[sIdx];
-  const yr=puan===Math.max(...k.puanlar)?'background:#EAF3DE;border:1px solid #639922;color:#27500A;':puan===0?'background:#FCEBEB;border:1px solid #E24B4A;color:#791F1F;':'background:#FAEEDA;border:1px solid #EF9F27;color:#633806;';
-  document.getElementById('geri-bildirim').innerHTML=`<div class="yorum" style="margin-top:10px;${yr}">${ym}<br><strong>+${puan} puan</strong></div>`+((bilgi.rol==='kolay'||bilgi.rol==='solo')?`<button class="btn ana" style="margin-top:10px;" onclick="${bilgi.rol==='solo'?'window._soloSonraki':'window.sonrakiKarara'}(${kIdx})">Sonraki →</button>`:'');
+  const yr=puan===Math.max(...k.puanlar)?'background:#EAF3DE;border:1px solid #639922;color:#27500A;':puan===0?'background:#FCEBEB;border:1px solid #F09595;color:#791F1F;':'background:#FAEEDA;border:1px solid #EF9F27;color:#633806;';
+  const gd=k.guvenEtki[sIdx]>=0?'+'+k.guvenEtki[sIdx]:k.guvenEtki[sIdx];
+  document.getElementById('geri-bildirim').innerHTML=`<div class="yorum-kutu" style="margin-top:8px;${yr}">${ym}<br><span style="font-size:11px;opacity:0.8;">+${puan} puan · ${gd} güven</span></div><button class="btn ana" style="margin-top:8px;width:100%;" onclick="window.sonrakiKarara(${kIdx})">Sonraki →</button>`;
 };
-window.sonrakiKarara=async(kIdx)=>{clearInterval(sureInterval);const s=kIdx+1,kod=bilgi.odaKodu,simdi=Date.now();if(s>=KARARLAR.length)await update(ref(db,`odalar/${kod}`),{durum:'bitti',mevcutKarar:s});else{await update(ref(db,`odalar/${kod}`),{mevcutKarar:s,sure_baslangic:simdi});oyunEkraniGoster(s);sureyiYonet(kod,s,simdi);}};
-async function sonuclariGoster(kod){
+
+window.sonrakiKarara=(kIdx)=>{const s=kIdx+1;if(s>=KARARLAR.length){araAsamaSonucu();return;}mevcutKarar=s;oyunEkraniGoster(s);};
+
+function araAsamaSonucu(){
   clearInterval(sureInterval);
-  const snap=await get(ref(db,`odalar/${kod}/oyuncular`));
-  const liste=Object.values(snap.val()||{}).sort((a,b)=>b.puan-a.puan);
+  oyunDurumu.tamamlananlar.push(oyunDurumu.mevcutSenaryo);
   const maxPuan=KARARLAR.reduce((a,k)=>a+Math.max(...k.puanlar),0);
   const yuzde=Math.round(toplamPuan/maxPuan*100);
-  document.getElementById('benim-puanim').textContent=toplamPuan;
-  document.getElementById('dogru-sayi').textContent=dogruSayi+'/'+KARARLAR.length;
-  document.getElementById('musteri-sonuc').textContent=yuzde>=60?'✓':'✗';
-  const kazandi=yuzde>=60;
-  document.getElementById('sonuc-baslik').textContent=kazandi?'Tebrikler! 🎉':'Tekrar deneyin';
-  document.getElementById('sonuc-yorum').textContent=yuzde>=80?'Mükemmel! Empati ve somut adımlar fark yarattı.':yuzde>=60?'İyi gitti ama bazı fırsatlar kaçırıldı.':'Savunmacı yaklaşım sonucu olumsuz etkiledi.';
-  const m=['🥇','🥈','🥉'];
-  document.getElementById('siralama-listesi').innerHTML=liste.map((o,i)=>`<div class="skor-satir ${i===0?'birinci':''}"><div class="skor-no">${m[i]||i+1+'.'}</div><div class="avatar" style="${i===0?'background:#FCD34D;color:#633806;':''}">${initials(o.ad)}</div><div class="skor-ad">${o.ad}</div><div class="skor-puan">${o.puan} puan</div></div>`).join('');
-  goster('sonuc');if(kazandi)konfeti();
+  const basarili=yuzde>=60,tumTamamlandi=oyunDurumu.tamamlananlar.length>=5;
+  const badge=document.getElementById('ara-badge');
+  badge.textContent=basarili?'✓ Aşama tamamlandı':'Aşama bitti';
+  badge.style.cssText=basarili?'background:#EAF3DE;color:#27500A;':'background:#FAEEDA;color:#633806;';
+  document.getElementById('ara-baslik').textContent=basarili?'Müşteri güveni arttı! 🎉':'Kriz devam ediyor...';
+  document.getElementById('ara-puan').textContent=toplamPuan+' puan';
+  document.getElementById('ara-guven').textContent=oyunDurumu.guven+'/100';
+  document.getElementById('ara-butce').textContent=oyunDurumu.butce+' birim';
+  const yr=document.getElementById('ara-yorum');
+  yr.style.cssText=basarili?'background:#EAF3DE;border:1px solid #639922;color:#27500A;':'background:#FAEEDA;border:1px solid #EF9F27;color:#633806;';
+  yr.textContent=basarili?'Harika! Bu aşamayı başarıyla geçtiniz.':'Müşteri tam ikna olmadı ama kriz devam ediyor.';
+  let yeniRozetler=[];
+  if(basarili)yeniRozetler.push(ROZETLER[oyunDurumu.mevcutSenaryo]);
+  if(tumTamamlandi){yeniRozetler.push(ROZETLER.tum);if(yuzde>=80)yeniRozetler.push(ROZETLER.altin);}
+  oyunDurumu.kazanilanRozetler=[...oyunDurumu.kazanilanRozetler,...yeniRozetler];
+  document.getElementById('ara-rozetler').innerHTML=yeniRozetler.length>0?'<div style="margin-top:4px;"><div style="font-size:11px;font-weight:bold;color:#633806;margin-bottom:4px;">🎖️ Kazanılan rozetler:</div>'+yeniRozetler.map(rozetKarti).join('')+'</div>':'';
+  if(basarili)konfeti('ara-konfeti');
+  const sonraki=ASAMA_SIRASI[oyunDurumu.mevcutSenaryo];
+  document.getElementById('sonraki-baslik').textContent=tumTamamlandi?'5 aşama tamamlandı!':'Sıradaki: '+KATEGORI_ISIMLERI[sonraki];
+  document.getElementById('sonraki-metin').textContent=tumTamamlandi?'Krizin final sonucunu görmek için devam edin.':'Kriz devam ediyor — '+KATEGORI_ISIMLERI[sonraki]+' aşamasına geçiyorsunuz.';
+  document.getElementById('sonraki-btn').textContent=tumTamamlandi?'Final sonucu gör →':'Devam et →';
+  goster('ara-sonuc');
+}
+
+window.sonrakiAsamayaGec=()=>{
+  if(oyunDurumu.tamamlananlar.length>=5){finalSonuc();return;}
+  const sonraki=ASAMA_SIRASI[oyunDurumu.mevcutSenaryo];
+  oyunDurumu.mevcutSenaryo=sonraki;oyunDurumu.asamaNo++;
+  KARARLAR=TUM_SENARYOLAR[sonraki];
+  mevcutKarar=0;toplamPuan=0;dogruSayi=0;oyunEkraniGoster(0);
+};
+
+window.oyunuBaslat=()=>{
+  const ad=document.getElementById('ad-input').value.trim();
+  if(!ad){alert('Lütfen adınızı girin.');return;}
+  oyunDurumu.ad=ad;oyunDurumu.tamamlananlar=[];oyunDurumu.asamaNo=1;oyunDurumu.kazanilanRozetler=[];
+  oyunDurumu.guven=45;oyunDurumu.butce=100;oyunDurumu.sure=48;oyunDurumu.puan=0;
+  KARARLAR=TUM_SENARYOLAR[oyunDurumu.mevcutSenaryo];
+  mevcutKarar=0;toplamPuan=0;dogruSayi=0;oyunEkraniGoster(0);
+};
+
+function finalSonuc(){
+  clearInterval(sureInterval);
+  const kazandi=oyunDurumu.guven>=60;
+  document.getElementById('sonuc-baslik').textContent=kazandi?'Kuzey Holding kaldı! 🎉':'Müşteri kaybedildi.';
+  document.getElementById('toplam-puan').textContent=oyunDurumu.puan;
+  document.getElementById('final-guven').textContent=oyunDurumu.guven+'/100';
+  document.getElementById('final-butce').textContent=oyunDurumu.butce+' birim';
+  const yr=document.getElementById('sonuc-yorum');
+  yr.style.cssText=kazandi?'background:#EAF3DE;border:1px solid #639922;color:#27500A;':'background:#FCEBEB;border:1px solid #F09595;color:#791F1F;';
+  yr.textContent=kazandi?'Mükemmel! 5 aşama boyunca empati, somut adımlar ve dayanıklılık gösterdiniz.':'Savunmacı yaklaşımlar ve somut olmayan adımlar güveni yok etti.';
+  document.getElementById('sonuc-rozetler').innerHTML=oyunDurumu.kazanilanRozetler.length>0?'<div style="font-size:12px;font-weight:bold;color:#633806;margin-bottom:6px;">🎖️ Kazandığınız rozetler:</div>'+oyunDurumu.kazanilanRozetler.map(rozetKarti).join(''):'';
+  document.getElementById('siralama').innerHTML=`<div class="skor-satir birinci"><div class="skor-no">🥇</div><div class="avatar" style="background:#FCD34D;color:#633806;">${initials(oyunDurumu.ad)}</div><div class="skor-ad">${oyunDurumu.ad}</div><div class="skor-puan">${oyunDurumu.puan} puan</div></div>`;
+  if(kazandi)konfeti('konfeti-wrap');
+  goster('sonuc');
 }
 </script>
 </body>
